@@ -2,26 +2,14 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8" />
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-/>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Eurovision 2026 Scoreboard</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-  rel="stylesheet"
-/>
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-
 :root{
   --bg:#060816;
-  --bg2:#0f1330;
   --pink:#ff2f86;
   --blue:#3ab8ff;
   --purple:#8a5cff;
@@ -30,1282 +18,516 @@
   --text:#ffffff;
   --muted:rgba(255,255,255,0.72);
 }
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
 body{
-  font-family:
-    "Montserrat",
-    system-ui,
-    sans-serif;
-
+  font-family:"Montserrat",system-ui,sans-serif;
   color:var(--text);
-
   background:
     radial-gradient(circle at top left,#ff008833,transparent 25%),
     radial-gradient(circle at top right,#00aaff22,transparent 25%),
-    linear-gradient(180deg,#080b1d 0%, #050816 35%, #050611 100%);
-
+    linear-gradient(180deg,#080b1d 0%,#050816 35%,#050611 100%);
   min-height:100vh;
   overflow-x:hidden;
 }
-
 body::before{
   content:"";
   position:fixed;
   inset:0;
   pointer-events:none;
-
-  background-image:
-    radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px);
-
+  background-image:radial-gradient(rgba(255,255,255,0.16) 1px,transparent 1px);
   background-size:4px 4px;
   opacity:0.04;
 }
 
+/* HERO */
 .hero{
   position:relative;
   overflow:hidden;
-
-  padding:
-    calc(env(safe-area-inset-top) + 48px)
-    20px
-    40px;
-
+  padding:calc(env(safe-area-inset-top) + 40px) 20px 32px;
   text-align:center;
 }
-
 .hero::before{
-  content:"";
-  position:absolute;
-
-  width:520px;
-  height:520px;
-
-  left:-180px;
-  top:-120px;
-
-  background:
-    radial-gradient(circle,#ff2f8644,transparent 70%);
-
-  filter:blur(40px);
+  content:"";position:absolute;width:520px;height:520px;left:-180px;top:-120px;
+  background:radial-gradient(circle,#ff2f8644,transparent 70%);filter:blur(40px);
 }
-
 .hero::after{
-  content:"";
-  position:absolute;
-
-  width:520px;
-  height:520px;
-
-  right:-180px;
-  top:-120px;
-
-  background:
-    radial-gradient(circle,#00aaff33,transparent 70%);
-
-  filter:blur(40px);
+  content:"";position:absolute;width:520px;height:520px;right:-180px;top:-120px;
+  background:radial-gradient(circle,#00aaff33,transparent 70%);filter:blur(40px);
 }
-
-.hero-content{
-  position:relative;
-  z-index:2;
-}
-
+.hero-content{position:relative;z-index:2;}
 .logo{
-  display:inline-flex;
-  align-items:center;
-  gap:14px;
-
-  margin-bottom:18px;
-
-  padding:10px 18px;
-
-  border-radius:999px;
-
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(10px);
-
-  font-size:0.85rem;
-  font-weight:700;
-  letter-spacing:2px;
-
-  text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding:8px 16px;border-radius:999px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
 }
-
 .logo-dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-
-  background:linear-gradient(
-    135deg,
-    var(--pink),
-    var(--blue)
-  );
-
+  width:9px;height:9px;border-radius:50%;
+  background:linear-gradient(135deg,var(--pink),var(--blue));
   box-shadow:0 0 20px var(--pink);
 }
-
 .esc{
-  font-size:clamp(3rem,10vw,6rem);
-  font-weight:800;
-  line-height:0.92;
-  letter-spacing:-4px;
-
-  text-shadow:
-    0 0 30px rgba(255,0,150,0.3);
+  font-size:clamp(2.8rem,10vw,6rem);font-weight:800;line-height:0.92;letter-spacing:-4px;
+  text-shadow:0 0 30px rgba(255,0,150,0.3);
 }
-
-.songcontest{
-  margin-top:10px;
-
-  font-size:clamp(0.9rem,3vw,1.4rem);
-  font-weight:700;
-
-  letter-spacing:6px;
-
-  opacity:0.92;
-}
-
+.songcontest{margin-top:10px;font-size:clamp(0.85rem,3vw,1.4rem);font-weight:700;letter-spacing:6px;opacity:0.92;}
 .vienna{
-  margin-top:20px;
-
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-
-  padding:12px 20px;
-
-  border-radius:999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,47,134,0.16),
-      rgba(58,184,255,0.14)
-    );
-
+  margin-top:18px;display:inline-flex;align-items:center;gap:10px;
+  padding:10px 18px;border-radius:999px;
+  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.14));
   border:1px solid rgba(255,255,255,0.08);
-
-  font-size:0.9rem;
-  font-weight:700;
-  letter-spacing:5px;
-
-  color:#ffd4e8;
+  font-size:0.85rem;font-weight:700;letter-spacing:4px;color:#ffd4e8;
 }
 
-.container{
-  width:min(1400px,100%);
-  margin:0 auto;
-
-  padding:0 16px 32px;
-}
-
+/* CONTAINER & GLASS */
+.container{width:min(1400px,100%);margin:0 auto;padding:0 14px 40px;}
 .glass{
-  background:rgba(255,255,255,0.04);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(18px);
-
-  border-radius:28px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);border-radius:24px;
 }
-
-.section{
-  padding:20px;
-}
-
+.section{padding:18px;}
 .section-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-
-  margin-bottom:18px;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  margin-bottom:16px;flex-wrap:wrap;
 }
-
-.section-title{
-  font-size:clamp(1.4rem,5vw,2.2rem);
-  font-weight:800;
-
-  letter-spacing:-1px;
-}
-
+.section-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;letter-spacing:-1px;}
 .storage{
-  padding:12px 16px;
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,0.05);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  font-size:0.85rem;
-
-  color:var(--muted);
+  padding:10px 14px;border-radius:16px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  font-size:0.8rem;color:var(--muted);
 }
 
+/* ── DESKTOP TABLE ── */
 .board-wrap{
-  overflow:auto;
-  -webkit-overflow-scrolling:touch;
-
-  border-radius:24px;
-
-  border:1px solid rgba(255,255,255,0.08);
+  overflow:auto;-webkit-overflow-scrolling:touch;
+  border-radius:20px;border:1px solid rgba(255,255,255,0.08);
 }
-
-.board{
-  min-width:940px;
-}
-
-.header-row,
-.row{
+.board{min-width:860px;}
+.header-row,.row{
   display:grid;
-
-  grid-template-columns:
-    80px
-    minmax(220px,1.8fr)
-    110px
-    110px
-    110px
-    110px
-    90px;
-
+  grid-template-columns:76px minmax(200px,1.8fr) 100px 100px 100px 100px 84px;
   align-items:center;
 }
-
 .header-row{
-  position:sticky;
-  top:0;
-  z-index:5;
-
-  padding:16px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(18,22,46,0.98),
-      rgba(11,14,29,0.98)
-    );
-
+  position:sticky;top:0;z-index:5;padding:14px 16px;
+  background:linear-gradient(180deg,rgba(18,22,46,0.98),rgba(11,14,29,0.98));
   backdrop-filter:blur(12px);
-
-  font-size:0.74rem;
-  font-weight:700;
-
-  letter-spacing:1px;
-  text-transform:uppercase;
-
-  color:rgba(255,255,255,0.72);
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.08);
+  font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:rgba(255,255,255,0.72);border-bottom:1px solid rgba(255,255,255,0.08);
 }
-
 .row{
-  padding:14px 16px;
-
-  transition:0.18s ease;
-
-  border-bottom:
-    1px solid rgba(255,255,255,0.05);
+  padding:12px 16px;transition:0.18s ease;
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
-
-.row:hover{
-  background:rgba(255,255,255,0.03);
-}
-
-.rank{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
+.row:hover{background:rgba(255,255,255,0.03);}
+.rank{display:flex;align-items:center;gap:10px;}
 .number{
-  width:44px;
-  height:44px;
-
-  border-radius:16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--pink),
-      var(--purple)
-    );
-
-  font-weight:800;
-
-  box-shadow:
-    0 0 24px rgba(255,47,134,0.28);
+  width:40px;height:40px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  font-weight:800;font-size:0.85rem;
+  box-shadow:0 0 20px rgba(255,47,134,0.28);
+  flex-shrink:0;
 }
-
-.flag{
-  font-size:1.8rem;
-  margin-right: 10px;
-}
-
-.country-name{
-  font-size:1.08rem;
-  font-weight:700;
-}
-
-.song{
-  margin-top:4px;
-
-  font-size:0.84rem;
-  line-height:1.3;
-
-  color:rgba(255,255,255,0.68);
-}
-
-.score-box,
-.final-box{
-  display:flex;
-  justify-content:center;
-}
-
+.flag{font-size:1.7rem;margin-right:8px;}
+.country-name{font-size:1rem;font-weight:700;}
+.song{margin-top:3px;font-size:0.8rem;line-height:1.3;color:rgba(255,255,255,0.65);}
+.score-box,.final-box{display:flex;justify-content:center;}
 input[type="number"]{
-  width:74px;
-  height:48px;
-
-  border:none;
-  outline:none;
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,0.06);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  color:white;
-
-  text-align:center;
-
-  font-size:1.05rem;
-  font-weight:700;
-
-  transition:0.18s;
+  width:70px;height:46px;border:none;outline:none;border-radius:14px;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  color:white;text-align:center;font-size:1rem;font-weight:700;
+  font-family:"Montserrat",sans-serif;transition:0.18s;
 }
-
-input[type="number"]:focus{
-  border-color:var(--pink);
-
-  box-shadow:
-    0 0 0 4px rgba(255,47,134,0.15);
-}
-
+input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,47,134,0.15);}
 .total{
-  width:74px;
-  height:48px;
+  width:70px;height:46px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.12));
+}
+input[type="checkbox"]{width:24px;height:24px;accent-color:var(--pink);}
 
-  border-radius:16px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,47,134,0.16),
-      rgba(58,184,255,0.12)
-    );
-
-  font-weight:800;
+/* ── MOBILE CARDS ── */
+.mobile-cards{display:none;}
+.m-card{
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
+  border-radius:20px;padding:16px;margin-bottom:12px;
+}
+.m-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.m-flag{font-size:2rem;}
+.m-country{flex:1;}
+.m-country-name{font-size:1.05rem;font-weight:800;}
+.m-song{font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:2px;line-height:1.35;}
+.m-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+.m-field label{display:block;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;text-align:center;}
+.m-field input[type="number"]{
+  width:100%;height:52px;border:none;outline:none;border-radius:14px;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  color:white;text-align:center;font-size:1.1rem;font-weight:800;
+  font-family:"Montserrat",sans-serif;transition:0.18s;
+}
+.m-field input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,47,134,0.18);}
+.m-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;
+}
+.m-total-wrap{display:flex;align-items:center;gap:10px;}
+.m-total-label{font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.m-total-val{
+  min-width:54px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;
+  background:linear-gradient(135deg,rgba(255,47,134,0.18),rgba(58,184,255,0.14));
+}
+.m-finalist{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.m-finalist-label{font-size:0.8rem;font-weight:700;color:var(--muted);}
+.m-finalist input[type="checkbox"]{
+  width:26px;height:26px;accent-color:var(--pink);cursor:pointer;
+  flex-shrink:0;
 }
 
-input[type="checkbox"]{
-  width:24px;
-  height:24px;
-
-  accent-color:var(--pink);
-}
-
-.actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-
-  gap:14px;
-
-  margin-top:18px;
-}
-
-button{
-  border:none;
-  outline:none;
-
-  cursor:pointer;
-
-  transition:0.2s ease;
-}
-
+/* ACTIONS */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+button{border:none;outline:none;cursor:pointer;transition:0.2s ease;}
 .reveal-btn{
-  height:64px;
-
-  border-radius:20px;
-
-  color:white;
-
-  font-size:1rem;
-  font-weight:800;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--pink),
-      var(--purple)
-    );
-
-  box-shadow:
-    0 10px 30px rgba(255,47,134,0.24);
+  height:60px;border-radius:18px;color:white;font-size:0.95rem;font-weight:800;
+  font-family:"Montserrat",sans-serif;
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  box-shadow:0 8px 28px rgba(255,47,134,0.22);
 }
+.secondary{background:linear-gradient(135deg,#0077ff,#00c6ff);}
+.reveal-btn:hover{transform:translateY(-2px);}
+.reveal-btn:active{transform:scale(0.97);}
+.limit{margin-top:12px;text-align:center;color:rgba(255,255,255,0.72);font-size:0.88rem;}
+.limit span{color:#ffd2e8;font-weight:700;}
 
-.secondary{
-  background:
-    linear-gradient(
-      135deg,
-      #0077ff,
-      #00c6ff
-    );
-}
-
-.reveal-btn:hover{
-  transform:translateY(-2px);
-}
-
-.reveal-btn:active{
-  transform:scale(0.98);
-}
-
-.limit{
-  margin-top:14px;
-
-  text-align:center;
-
-  color:rgba(255,255,255,0.76);
-
-  font-size:0.92rem;
-}
-
-.limit span{
-  color:#ffd2e8;
-  font-weight:700;
-}
-
+/* OVERLAY */
 .overlay{
-  position:fixed;
-  inset:0;
-
-  z-index:999;
-
-  padding:24px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
-  background:
-    rgba(0,0,0,0.9);
-
-  opacity:0;
-  pointer-events:none;
-
-  transition:0.25s;
+  position:fixed;inset:0;z-index:999;
+  padding:24px;display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:rgba(0,0,0,0.88);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
-
-.overlay.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.overlay-inner{
-  width:min(920px,100%);
-}
-
-.overlay-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  margin-bottom:18px;
-}
-
-.overlay-title{
-  font-size:clamp(1.4rem,5vw,2rem);
-  font-weight:800;
-}
-
+.overlay.show{display:flex;}
+.overlay-inner{width:min(920px,100%);}
+.overlay-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+.overlay-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;}
 .close-btn{
-  width:50px;
-  height:50px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,0.08);
-
-  color:white;
-
-  font-size:1.3rem;
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,0.1);color:white;font-size:1.2rem;
+  font-family:"Montserrat",sans-serif;flex-shrink:0;
 }
-
-.top10{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
+.top10{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .top-card{
-  padding:18px;
-
-  border-radius:22px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.08),
-      rgba(255,255,255,0.04)
-    );
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:12px;
+  padding:16px;border-radius:20px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.04));
+  border:1px solid rgba(255,255,255,0.09);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
 }
+.top-country{display:flex;align-items:center;gap:12px;font-weight:700;}
+.place{width:40px;font-size:1.6rem;font-weight:800;color:#ffd1e6;flex-shrink:0;}
+.points{font-weight:700;color:rgba(255,255,255,0.7);white-space:nowrap;}
 
-.top-country{
-  display:flex;
-  align-items:center;
-  gap:14px;
-
-  font-weight:700;
-}
-
-.place{
-  width:44px;
-
-  font-size:1.8rem;
-  font-weight:800;
-
-  color:#ffd1e6;
-}
-
-.points{
-  font-weight:700;
-  color:rgba(255,255,255,0.74);
-}
-
+/* FOOTER */
 .footer{
-  padding:
-    28px
-    20px
-    calc(env(safe-area-inset-bottom) + 36px);
-
-  text-align:center;
-
-  color:rgba(255,255,255,0.6);
-
-  font-size:0.9rem;
+  padding:28px 20px calc(env(safe-area-inset-bottom) + 32px);
+  text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem;
 }
 
-::-webkit-scrollbar{
-  height:10px;
-  width:10px;
+::-webkit-scrollbar{height:8px;width:8px;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.16);border-radius:999px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .board-wrap{display:none;}
+  .mobile-cards{display:block;}
+  .section{padding:14px;}
+  .section-row{flex-direction:column;align-items:stretch;}
+  .storage{text-align:center;font-size:0.78rem;}
+  .actions{grid-template-columns:1fr;}
+  .reveal-btn{height:56px;}
+  .top10{grid-template-columns:1fr;}
+  .overlay{padding:14px;}
+  .overlay-title{font-size:1.3rem;}
 }
-
-::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,0.18);
-  border-radius:999px;
+@media(max-width:380px){
+  .m-inputs{grid-template-columns:1fr 1fr 1fr;}
+  .m-field input[type="number"]{height:48px;font-size:1rem;}
 }
-
-@media(max-width:900px){
-
-  .section{
-    padding:16px;
-  }
-
-  .section-row{
-    flex-direction:column;
-    align-items:stretch;
-  }
-
-  .storage{
-    text-align:center;
-  }
-
-  .board-wrap{
-    margin-left:-16px;
-    margin-right:-16px;
-
-    border-radius:0;
-
-    border-left:none;
-    border-right:none;
-  }
-
-  .actions{
-    grid-template-columns:1fr;
-  }
-
-  .header-row,
-  .row{
-    min-width:860px;
-  }
-
-  .top10{
-    grid-template-columns:1fr;
-  }
-
-  .overlay{
-    padding:16px;
-  }
-
-}
-
 </style>
 </head>
-
 <body>
 
 <div class="hero">
-
   <div class="hero-content">
-
-    <div class="logo">
-      <div class="logo-dot"></div>
-      ESC WATCH PARTY
-    </div>
-
-    <div class="esc">
-      Eurovision
-    </div>
-
-    <div class="songcontest">
-      SONG CONTEST
-    </div>
-
-    <div class="vienna">
-      ✨ VIENNA 2026 ✨
-    </div>
-
+    <div class="logo"><div class="logo-dot"></div>ESC WATCH PARTY</div>
+    <div class="esc">Eurovision</div>
+    <div class="songcontest">SONG CONTEST</div>
+    <div class="vienna">✨ VIENNA 2026 ✨</div>
   </div>
-
 </div>
 
 <div class="container">
-
   <div class="glass section">
 
     <div class="section-row">
-
-      <div class="section-title">
-        Erstes Halbfinale
-      </div>
-
-      <div class="storage">
-        🔒 Deine Scores bleiben nur auf deinem Gerät gespeichert
-      </div>
-
+      <div class="section-title">Erstes Halbfinale</div>
+      <div class="storage">🔒 Scores nur auf deinem Gerät gespeichert</div>
     </div>
 
+    <!-- DESKTOP TABLE -->
     <div class="board-wrap">
-
       <div class="board">
-
         <div class="header-row">
-
           <div>#</div>
-          <div>Land & Song</div>
-          <div>Song</div>
-          <div>Vocals</div>
-          <div>Staging</div>
-          <div>Gesamt</div>
-          <div>Finale</div>
-
+          <div>Land &amp; Song</div>
+          <div style="text-align:center">Song</div>
+          <div style="text-align:center">Vocals</div>
+          <div style="text-align:center">Staging</div>
+          <div style="text-align:center">Gesamt</div>
+          <div style="text-align:center">Finale</div>
         </div>
-
-        <div id="board"></div>
-
+        <div id="board-desktop"></div>
       </div>
-
     </div>
+
+    <!-- MOBILE CARDS -->
+    <div class="mobile-cards" id="board-mobile"></div>
 
     <div class="actions">
-
-      <button
-        class="reveal-btn"
-        onclick="revealTop10()">
-
-        🏆 Reveal meine Top 10
-
-      </button>
-
-      <button
-        class="reveal-btn secondary"
-        onclick="revealFinalists()">
-
-        ✨ Nur Finalisten anzeigen
-
-      </button>
-
+      <button class="reveal-btn" onclick="revealTop10()">🏆 Meine Top 10</button>
+      <button class="reveal-btn secondary" onclick="revealFinalists()">✨ Finalisten</button>
     </div>
 
-    <div class="limit">
-      Du kannst <span>maximal 10 Länder</span> fürs Finale auswählen.
-    </div>
-
+    <div class="limit">Max. <span>10 Länder</span> fürs Finale wählen</div>
   </div>
-
 </div>
 
 <div class="overlay" id="overlay">
-
   <div class="overlay-inner">
-
     <div class="overlay-header">
-
-      <div class="overlay-title">
-        ✨ Meine ESC Top 10 ✨
-      </div>
-
-      <button
-        class="close-btn"
-        onclick="closeOverlay()">
-
-        ✕
-
-      </button>
-
+      <div class="overlay-title" id="overlay-title">✨ Meine ESC Top 10 ✨</div>
+      <button class="close-btn" onclick="closeOverlay()">✕</button>
     </div>
-
     <div class="top10" id="top10"></div>
-
   </div>
-
 </div>
 
-<div class="footer">
-  ♡ United by Music · ESC 2026 Watch Party
-</div>
+<div class="footer">♡ United by Music · ESC 2026 Watch Party</div>
 
 <script>
+const countries=[
 
-const countries = [
+{flag:"🇧🇬",number:"01",name:"Bulgarien",song:"DARA – Bangaranga"},
 
-{
-flag:"🇧🇬",
-number:"01",
-name:"Bulgarien",
-song:"DARA – Bangaranga"
-},
+{flag:"🇦🇿",number:"02",name:"Aserbaidschan",song:"JIVA – Just Go"},
 
-{
-flag:"🇦🇿",
-number:"02",
-name:"Aserbaidschan",
-song:"JIVA – Just Go"
-},
+{flag:"🇷🇴",number:"03",name:"Rumänien",song:"Alexandra Căpitănescu – Choke Me"},
 
-{
-flag:"🇷🇴",
-number:"03",
-name:"Rumänien",
-song:"Alexandra Căpitănescu – Choke Me"
-},
+{flag:"🇱🇺",number:"04",name:"Luxemburg",song:"Eva Marija – Mother Nature"},
 
-{
-flag:"🇱🇺",
-number:"04",
-name:"Luxemburg",
-song:"Eva Marija – Mother Nature"
-},
+{flag:"🇨🇿",number:"05",name:"Tschechien",song:"Daniel Zizka – CROSSROADS"},
 
-{
-flag:"🇨🇿",
-number:"05",
-name:"Tschechien",
-song:"Daniel Zizka – CROSSROADS"
-},
+{flag:"🇦🇲",number:"06",name:"Armenien",song:"SIMÓN – Paloma Rumba"},
 
-{
-flag:"🇦🇲",
-number:"06",
-name:"Armenien",
-song:"SIMÓN – Paloma Rumba"
-},
+{flag:"🇨🇭",number:"07",name:"Schweiz",song:"Veronica Fusaro – Alice"},
 
-{
-flag:"🇨🇭",
-number:"07",
-name:"Schweiz",
-song:"Veronica Fusaro – Alice"
-},
+{flag:"🇨🇾",number:"08",name:"Zypern",song:"Antigoni – JALLA"},
 
-{
-flag:"🇨🇾",
-number:"08",
-name:"Zypern",
-song:"Antigoni – JALLA"
-},
+{flag:"🇱🇻",number:"09",name:"Lettland",song:"Atvara – Ēnā"},
 
-{
-flag:"🇱🇻",
-number:"09",
-name:"Lettland",
-song:"Atvara – Ēnā"
-},
+{flag:"🇩🇰",number:"10",name:"Dänemark",song:"Søren Torpegaard Lund – Før Vi Går Hjem"},
 
-{
-flag:"🇩🇰",
-number:"10",
-name:"Dänemark",
-song:"Søren Torpegaard Lund – Før Vi Går Hjem"
-},
+{flag:"🇦🇺",number:"11",name:"Australien",song:"Delta Goodrem – Eclipse"},
 
-{
-flag:"🇦🇺",
-number:"11",
-name:"Australien",
-song:"Delta Goodrem – Eclipse"
-},
+{flag:"🇺🇦",number:"12",name:"Ukraine",song:"LELÉKA – Ridnym"},
 
-{
-flag:"🇺🇦",
-number:"12",
-name:"Ukraine",
-song:"LELÉKA – Ridnym"
-},
+{flag:"🇦🇱",number:"13",name:"Albanien",song:"Alis – Nân"},
 
-{
-flag:"🇦🇱",
-number:"13",
-name:"Albanien",
-song:"Alis – Nân"
-},
+{flag:"🇲🇹",number:"14",name:"Malta",song:"AIDAN – Bella"},
 
-{
-flag:"🇲🇹",
-number:"14",
-name:"Malta",
-song:"AIDAN – Bella"
-},
-
-{
-flag:"🇳🇴",
-number:"15",
-name:"Norwegen",
-song:"JONAS LOVV – YA YA YA"
-}
+{flag:"🇳🇴",number:"15",name:"Norwegen",song:"JONAS LOVV – YA YA YA"}
 
 ];
 
-let scores =
-JSON.parse(
-  localStorage.getItem("esc2026-semi2")
-) || {};
+let scores=JSON.parse(localStorage.getItem("esc2026-semi2"))||{};
 
-const board =
-document.getElementById("board");
+function save(){localStorage.setItem("esc2026-semi2",JSON.stringify(scores));}
 
-function saveScores(){
+function ensureScore(key){
+  if(!scores[key]) scores[key]={song:0,vocals:0,staging:0,final:false};
+}
 
-  localStorage.setItem(
-    "esc2026-semi2",
-    JSON.stringify(scores)
-  );
+function updateScore(country,cat,val){
+  let v=Number(val);if(v<0)v=0;if(v>12)v=12;
+  scores[country][cat]=v;
+  save();renderTotals();
+}
 
+function toggleFinal(country,checked){
+  const count=Object.values(scores).filter(s=>s.final).length;
+  if(checked&&count>=10){
+    alert("Du kannst maximal 10 Länder auswählen.");
+    render();return;
+  }
+  scores[country].final=checked;
+  save();renderTotals();
+}
+
+function renderTotals(){
+  countries.forEach(c=>{
+    const key=c.name;
+    const t=(scores[key].song||0)+(scores[key].vocals||0)+(scores[key].staging||0);
+    // update desktop total
+    const dtEl=document.getElementById("dt-total-"+key);
+    if(dtEl) dtEl.textContent=t;
+    // update mobile total
+    const mtEl=document.getElementById("mt-total-"+key);
+    if(mtEl) mtEl.textContent=t;
+  });
 }
 
 function render(){
+  const desktop=document.getElementById("board-desktop");
+  const mobile=document.getElementById("board-mobile");
+  desktop.innerHTML="";mobile.innerHTML="";
 
-  board.innerHTML = "";
+  countries.forEach(c=>{
+    const key=c.name;
+    ensureScore(key);
+    const s=scores[key];
+    const total=s.song+s.vocals+s.staging;
 
-  countries.forEach(country=>{
-
-    const key = country.name;
-
-    if(!scores[key]){
-
-      scores[key] = {
-        song:0,
-        vocals:0,
-        staging:0,
-        final:false
-      };
-
-    }
-
-    const total =
-      scores[key].song +
-      scores[key].vocals +
-      scores[key].staging;
-
-    const row =
-    document.createElement("div");
-
-    row.className = "row";
-
-    row.innerHTML = `
-
+    // --- DESKTOP ROW ---
+    const row=document.createElement("div");
+    row.className="row";
+    row.innerHTML=`
       <div class="rank">
-
-        <div class="number">
-          ${country.number}
-        </div>
-
-        <div class="flag">
-          ${country.flag}
-        </div>
-
+        <div class="number">${c.number}</div>
+        <div class="flag">${c.flag}</div>
       </div>
-
       <div>
-
-        <div class="country-name">
-          ${country.name}
-        </div>
-
-        <div class="song">
-          ${country.song}
-        </div>
-
+        <div class="country-name">${c.name}</div>
+        <div class="song">${c.song}</div>
       </div>
-
       <div class="score-box">
-
-        <input
-          type="number"
-          inputmode="numeric"
-          min="0"
-          max="12"
-
-          value="${scores[key].song}"
-
-          onchange="
-            updateScore(
-              '${key}',
-              'song',
-              this.value
-            )
-          "
-        >
-
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
+          onchange="updateScore('${key}','song',this.value)">
       </div>
-
       <div class="score-box">
-
-        <input
-          type="number"
-          inputmode="numeric"
-          min="0"
-          max="12"
-
-          value="${scores[key].vocals}"
-
-          onchange="
-            updateScore(
-              '${key}',
-              'vocals',
-              this.value
-            )
-          "
-        >
-
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
+          onchange="updateScore('${key}','vocals',this.value)">
       </div>
-
       <div class="score-box">
-
-        <input
-          type="number"
-          inputmode="numeric"
-          min="0"
-          max="12"
-
-          value="${scores[key].staging}"
-
-          onchange="
-            updateScore(
-              '${key}',
-              'staging',
-              this.value
-            )
-          "
-        >
-
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
+          onchange="updateScore('${key}','staging',this.value)">
       </div>
-
       <div class="score-box">
-
-        <div class="total">
-          ${total}
-        </div>
-
+        <div class="total" id="dt-total-${key}">${total}</div>
       </div>
-
       <div class="final-box">
+        <input type="checkbox" ${s.final?"checked":""}
+          onchange="toggleFinal('${key}',this.checked)">
+      </div>`;
+    desktop.appendChild(row);
 
-        <input
-          type="checkbox"
-
-          ${scores[key].final
-            ? "checked"
-            : ""
-          }
-
-          onchange="
-            toggleFinal(
-              '${key}',
-              this.checked
-            )
-          "
-        >
-
+    // --- MOBILE CARD ---
+    const card=document.createElement("div");
+    card.className="m-card";
+    card.innerHTML=`
+      <div class="m-card-header">
+        <div class="m-flag">${c.flag}</div>
+        <div class="m-country">
+          <div class="m-country-name">${c.number}. ${c.name}</div>
+          <div class="m-song">${c.song}</div>
+        </div>
       </div>
-
-    `;
-
-    board.appendChild(row);
-
+      <div class="m-inputs">
+        <div class="m-field">
+          <label>Song</label>
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
+            onchange="updateScore('${key}','song',this.value)">
+        </div>
+        <div class="m-field">
+          <label>Vocals</label>
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
+            onchange="updateScore('${key}','vocals',this.value)">
+        </div>
+        <div class="m-field">
+          <label>Staging</label>
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
+            onchange="updateScore('${key}','staging',this.value)">
+        </div>
+      </div>
+      <div class="m-footer">
+        <div class="m-total-wrap">
+          <div class="m-total-label">Gesamt</div>
+          <div class="m-total-val" id="mt-total-${key}">${total}</div>
+        </div>
+        <label class="m-finalist">
+          <span class="m-finalist-label">Ins Finale?</span>
+          <input type="checkbox" ${s.final?"checked":""}
+            onchange="toggleFinal('${key}',this.checked)">
+        </label>
+      </div>`;
+    mobile.appendChild(card);
   });
-
-  saveScores();
-
+  save();
 }
 
-function updateScore(
-  country,
-  category,
-  value
-){
-
-  let score = Number(value);
-
-  if(score < 0) score = 0;
-  if(score > 12) score = 12;
-
-  scores[country][category] = score;
-
-  render();
-
+function getRanking(finalistsOnly){
+  return countries
+    .map(c=>{
+      const s=scores[c.name]||{song:0,vocals:0,staging:0,final:false};
+      return{flag:c.flag,name:c.name,total:s.song+s.vocals+s.staging,final:s.final};
+    })
+    .filter(c=>!finalistsOnly||c.final)
+    .sort((a,b)=>b.total-a.total);
 }
 
-function toggleFinal(
-  country,
-  checked
-){
-
-  const finalists =
-    Object.values(scores)
-    .filter(s => s.final)
-    .length;
-
-  if(
-    checked &&
-    finalists >= 10
-  ){
-
-    alert(
-      "Du kannst maximal 10 Länder auswählen."
-    );
-
-    render();
-
-    return;
-  }
-
-  scores[country].final = checked;
-
-  render();
-
-}
-
-function getRanking(finalistsOnly=false){
-
-  const ranking = [];
-
-  countries.forEach(country=>{
-
-    const score = scores[country.name];
-
-    const total =
-      score.song +
-      score.vocals +
-      score.staging;
-
-    if(finalistsOnly && !score.final){
-      return;
-    }
-
-    ranking.push({
-      flag:country.flag,
-      name:country.name,
-      total,
-      final:score.final
+function showOverlay(ranking,titleText,showPoints){
+  document.getElementById("overlay-title").textContent=titleText;
+  const top10=document.getElementById("top10");
+  top10.innerHTML="";
+  if(ranking.length===0){
+    top10.innerHTML=`<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px 0">
+      Noch keine Einträge – erst Länder auswählen!</p>`;
+  }else{
+    ranking.forEach((c,i)=>{
+      const card=document.createElement("div");
+      card.className="top-card";
+      card.innerHTML=`
+        <div class="top-country">
+          <div class="place">${i+1}</div>
+          <div>${c.flag} ${c.name}</div>
+        </div>
+        <div class="points">${showPoints?c.total+" Pkt":"FINALIST"}</div>`;
+      top10.appendChild(card);
     });
-
-  });
-
-  return ranking.sort(
-    (a,b)=>b.total-a.total
-  );
-
+  }
+  document.getElementById("overlay").classList.add("show");
+  document.body.style.overflow="hidden";
 }
 
 function revealTop10(){
-
-  const ranking =
-    getRanking(true);
-
-  const top10 =
-    document.getElementById("top10");
-
-  top10.innerHTML = "";
-
-  ranking.forEach((country,index)=>{
-
-    const card =
-      document.createElement("div");
-
-    card.className = "top-card";
-
-    card.innerHTML = `
-
-      <div class="top-country">
-
-        <div class="place">
-          ${index + 1}
-        </div>
-
-        <div>
-          ${country.flag} ${country.name}
-        </div>
-
-      </div>
-
-      <div class="points">
-        ${country.total} Punkte
-      </div>
-
-    `;
-
-    top10.appendChild(card);
-
-  });
-
-  openOverlay();
-
+  showOverlay(getRanking(false),"🏆 Meine Top 10 nach Punkten",true);
 }
-
 function revealFinalists(){
-
-  const ranking =
-    getRanking(true);
-
-  const top10 =
-    document.getElementById("top10");
-
-  top10.innerHTML = "";
-
-  ranking.forEach((country,index)=>{
-
-    const card =
-      document.createElement("div");
-
-    card.className = "top-card";
-
-    card.innerHTML = `
-
-      <div class="top-country">
-
-        <div class="place">
-          ${index + 1}
-        </div>
-
-        <div>
-          ${country.flag} ${country.name}
-        </div>
-
-      </div>
-
-      <div class="points">
-        FINALIST
-      </div>
-
-    `;
-
-    top10.appendChild(card);
-
-  });
-
-  openOverlay();
-
+  showOverlay(getRanking(true),"✨ Meine Finalisten",false);
 }
-
-function openOverlay(){
-
-  document
-    .getElementById("overlay")
-    .classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-}
-
 function closeOverlay(){
-
-  document
-    .getElementById("overlay")
-    .classList.remove("show");
-
-  document.body.style.overflow = "";
-
+  document.getElementById("overlay").classList.remove("show");
+  document.body.style.overflow="";
 }
 
-document
-.getElementById("overlay")
-.addEventListener("click",(e)=>{
-
-  if(e.target.id === "overlay"){
-    closeOverlay();
-  }
-
+document.getElementById("overlay").addEventListener("click",e=>{
+  if(e.target.id==="overlay") closeOverlay();
 });
-
-document.addEventListener(
-  "keydown",
-  (e)=>{
-
-    if(e.key === "Escape"){
-      closeOverlay();
-    }
-
-  }
-);
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closeOverlay();});
 
 render();
-
 </script>
-
 </body>
 </html>
