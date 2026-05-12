@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8" />
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<title>
+ESC 2026 Grand Final
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+
+:root{
+
+  --pink:#ff2f86;
+  --blue:#39c6ff;
+  --purple:#8c5cff;
+  --gold:#ffd166;
+
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  font-family:
+    "Montserrat",
+    sans-serif;
+
+  min-height:100vh;
+
+  color:white;
+
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(circle at top left,#ff008844,transparent 25%),
+    radial-gradient(circle at top right,#00aaff22,transparent 25%),
+    linear-gradient(
+      180deg,
+      #090b1f 0%,
+      #060816 40%,
+      #03030a 100%
+    );
+
+  position:relative;
+}
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,0.16) 1px,
+      transparent 1px
+    );
+
+  background-size:4px 4px;
+
+  opacity:0.04;
+}
+
+.glow{
+
+  position:fixed;
+
+  width:520px;
+  height:520px;
+
+  border-radius:50%;
+
+  filter:blur(100px);
+
+  pointer-events:none;
+}
+
+.glow1{
+
+  left:-140px;
+  top:-180px;
+
+  background:#ff008855;
+}
+
+.glow2{
+
+  right:-180px;
+  bottom:-220px;
+
+  background:#00aaff33;
+}
+
+.hero{
+
+  position:relative;
+
+  text-align:center;
+
+  padding:
+    calc(env(safe-area-inset-top) + 60px)
+    20px
+    40px;
+}
+
+.logo{
+
+  display:inline-flex;
+
+  align-items:center;
+  gap:12px;
+
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  margin-bottom:30px;
+
+  font-size:0.88rem;
+  font-weight:700;
+
+  letter-spacing:2px;
+}
+
+.dot{
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--blue)
+    );
+
+  box-shadow:
+    0 0 20px var(--pink);
+}
+
+.title{
+
+  font-size:
+    clamp(3.8rem,12vw,7.5rem);
+
+  font-weight:800;
+
+  line-height:0.9;
+
+  letter-spacing:-6px;
+
+  text-shadow:
+    0 0 40px rgba(255,0,150,0.28);
+}
+
+.subtitle{
+
+  margin-top:12px;
+
+  font-size:
+    clamp(0.9rem,2vw,1.2rem);
+
+  letter-spacing:8px;
+
+  opacity:0.82;
+}
+
+.final-badge{
+
+  margin-top:24px;
+
+  display:inline-flex;
+
+  align-items:center;
+  gap:12px;
+
+  padding:14px 24px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,209,102,0.16),
+      rgba(255,47,134,0.14)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  font-size:0.92rem;
+
+  font-weight:800;
+
+  letter-spacing:4px;
+
+  color:#ffe7a8;
+}
+
+.container{
+
+  width:min(1500px,100%);
+  margin:0 auto;
+
+  padding:0 18px 40px;
+}
+
+.panel{
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.03)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  border-radius:32px;
+
+  backdrop-filter:blur(18px);
+
+  overflow:hidden;
+}
+
+.panel-top{
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  gap:20px;
+
+  padding:24px;
+}
+
+.panel-title{
+
+  font-size:2rem;
+  font-weight:800;
+
+  letter-spacing:-1px;
+}
+
+.panel-info{
+
+  font-size:0.9rem;
+
+  opacity:0.74;
+
+  text-align:right;
+
+  line-height:1.5;
+}
+
+.board-wrap{
+
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.board{
+
+  min-width:1100px;
+}
+
+.header-row,
+.row{
+
+  display:grid;
+
+  grid-template-columns:
+    90px
+    1.8fr
+    140px
+    140px
+    140px
+    140px
+    120px;
+
+  align-items:center;
+}
+
+.header-row{
+
+  position:sticky;
+  top:0;
+
+  z-index:5;
+
+  padding:18px 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(14,17,37,0.98),
+      rgba(10,12,28,0.98)
+    );
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  font-size:0.75rem;
+  font-weight:700;
+
+  color:rgba(255,255,255,0.72);
+}
+
+.row{
+
+  padding:18px 20px;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.05);
+
+  transition:0.18s ease;
+}
+
+.row:hover{
+
+  background:
+    rgba(255,255,255,0.03);
+}
+
+.rank{
+
+  display:flex;
+
+  align-items:center;
+  gap:16px;
+}
+
+.number{
+
+  width:48px;
+  height:48px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--purple)
+    );
+
+  font-weight:800;
+
+  box-shadow:
+    0 0 24px rgba(255,47,134,0.24);
+}
+
+.flag{
+
+  font-size:1.9rem;
+
+  margin-right:10px;
+}
+
+.country-name{
+
+  font-size:1.08rem;
+  font-weight:700;
+}
+
+.song{
+
+  margin-top:4px;
+
+  font-size:0.84rem;
+
+  color:
+    rgba(255,255,255,0.68);
+
+  line-height:1.35;
+}
+
+.score-box{
+
+  display:flex;
+  justify-content:center;
+}
+
+input[type="number"]{
+
+  width:92px;
+  height:54px;
+
+  border:none;
+  outline:none;
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  text-align:center;
+
+  font-size:1.05rem;
+  font-weight:800;
+
+  transition:0.18s ease;
+}
+
+input[type="number"]:focus{
+
+  border-color:var(--pink);
+
+  box-shadow:
+    0 0 0 4px rgba(255,47,134,0.14);
+}
+
+.total{
+
+  width:92px;
+  height:54px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,209,102,0.16),
+      rgba(255,47,134,0.12)
+    );
+
+  font-size:1.15rem;
+  font-weight:800;
+
+  color:#ffe7a8;
+}
+
+.prediction{
+
+  width:92px;
+  height:54px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.09),
+      rgba(255,255,255,0.04)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  font-size:1.2rem;
+  font-weight:800;
+}
+
+.actions{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:16px;
+
+  padding:24px;
+}
+
+button{
+
+  border:none;
+  outline:none;
+
+  cursor:pointer;
+
+  transition:0.2s ease;
+}
+
+.action-btn{
+
+  height:68px;
+
+  border-radius:22px;
+
+  color:white;
+
+  font-size:1rem;
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--purple)
+    );
+
+  box-shadow:
+    0 12px 36px rgba(255,47,134,0.22);
+}
+
+.secondary{
+
+  background:
+    linear-gradient(
+      135deg,
+      #0077ff,
+      #00c6ff
+    );
+}
+
+.action-btn:hover{
+
+  transform:translateY(-2px);
+}
+
+.info{
+
+  padding:
+    0 24px 26px;
+
+  text-align:center;
+
+  font-size:0.92rem;
+
+  opacity:0.72;
+
+  line-height:1.7;
+}
+
+.overlay{
+
+  position:fixed;
+  inset:0;
+
+  z-index:999;
+
+  padding:24px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(0,0,0,0.92);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:0.25s;
+}
+
+.overlay.show{
+
+  opacity:1;
+  pointer-events:auto;
+}
+
+.overlay-box{
+
+  width:min(950px,100%);
+}
+
+.overlay-header{
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.overlay-title{
+
+  font-size:2rem;
+  font-weight:800;
+}
+
+.close-btn{
+
+  width:52px;
+  height:52px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  color:white;
+
+  font-size:1.3rem;
+}
+
+.results{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:14px;
+}
+
+.result-card{
+
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  gap:14px;
+
+  padding:18px;
+
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.04)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.result-left{
+
+  display:flex;
+
+  align-items:center;
+  gap:16px;
+}
+
+.place{
+
+  width:52px;
+
+  font-size:2rem;
+  font-weight:800;
+
+  color:#ffe7a8;
+}
+
+.result-country{
+
+  font-size:1.05rem;
+  font-weight:700;
+}
+
+.result-points{
+
+  font-weight:700;
+
+  opacity:0.76;
+}
+
+.footer{
+
+  padding:
+    36px
+    20px
+    calc(env(safe-area-inset-bottom) + 40px);
+
+  text-align:center;
+
+  opacity:0.58;
+
+  line-height:1.8;
+
+  font-size:0.9rem;
+}
+
+@media(max-width:900px){
+
+  .hero{
+
+    padding:
+      calc(env(safe-area-inset-top) + 42px)
+      16px
+      30px;
+  }
+
+  .title{
+
+    letter-spacing:-4px;
+  }
+
+  .subtitle{
+
+    letter-spacing:4px;
+  }
+
+  .final-badge{
+
+    font-size:0.76rem;
+
+    letter-spacing:2px;
+  }
+
+  .container{
+
+    padding:0 12px 30px;
+  }
+
+  .panel{
+
+    border-radius:24px;
+  }
+
+  .panel-top{
+
+    flex-direction:column;
+    align-items:flex-start;
+
+    padding:18px;
+  }
+
+  .panel-title{
+
+    font-size:1.5rem;
+  }
+
+  .panel-info{
+
+    text-align:left;
+
+    font-size:0.82rem;
+  }
+
+  .header-row,
+  .row{
+
+    min-width:1040px;
+  }
+
+  .actions{
+
+    grid-template-columns:1fr;
+
+    padding:18px;
+  }
+
+  .results{
+
+    grid-template-columns:1fr;
+  }
+
+  .overlay{
+
+    padding:16px;
+  }
+
+  .overlay-title{
+
+    font-size:1.4rem;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="hero">
+
+  <div class="logo">
+
+    <div class="dot"></div>
+
+    ESC GRAND FINAL
+
+  </div>
+
+  <div class="title">
+
+    Eurovision
+
+  </div>
+
+  <div class="subtitle">
+
+    VIENNA 2026
+
+  </div>
+
+  <div class="final-badge">
+
+    🏆 GRAND FINAL PREDICTION 🏆
+
+  </div>
+
+</div>
+
+<div class="container">
+
+  <div class="panel">
+
+    <div class="panel-top">
+
+      <div class="panel-title">
+        Dein Grand Final Ranking
+      </div>
+
+      <div class="panel-info">
+
+        Vergib Punkte & tippe die finale Platzierung.<br>
+        1 = Gewinner · 25 = letzter Platz
+
+      </div>
+
+    </div>
+
+    <div class="board-wrap">
+
+      <div class="board">
+
+        <div class="header-row">
+
+          <div>#</div>
+          <div>Land & Song</div>
+          <div>Song</div>
+          <div>Vocals</div>
+          <div>Staging</div>
+          <div>Gesamt</div>
+          <div>Platz</div>
+
+        </div>
+
+        <div id="board"></div>
+
+      </div>
+
+    </div>
+
+    <div class="actions">
+
+      <button
+        class="action-btn"
+        onclick="showPrediction()">
+
+        ✨ Reveal meine Final Prediction
+
+      </button>
+
+      <button
+        class="action-btn secondary"
+        onclick="autoSort()">
+
+        🏆 Auto-Sort nach Punkten
+
+      </button>
+
+    </div>
+
+    <div class="info">
+
+      Die Platzierungen werden lokal auf deinem Gerät gespeichert ✨
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+
+  <div class="overlay-box">
+
+    <div class="overlay-header">
+
+      <div class="overlay-title">
+
+        ✨ Meine ESC 2026 Prediction ✨
+
+      </div>
+
+      <button
+        class="close-btn"
+        onclick="closeOverlay()">
+
+        ✕
+
+      </button>
+
+    </div>
+
+    <div class="results" id="results"></div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+
+  ♡ ESC 2026 Watch Party<br>
+  United by Music · Vienna 2026
+
+</div>
+
+<script>
+
+const countries = Array.from(
+  {length:25},
+  (_,i)=>({
+
+    flag:"🏳️",
+    number:String(i+1).padStart(2,"0"),
+    name:`Finalist ${i+1}`,
+    song:"TBA"
+
+  })
+);
+
+let scores =
+JSON.parse(
+  localStorage.getItem("esc2026-final")
+)
+|| {};
+
+const board =
+document.getElementById("board");
+
+function save(){
+
+  localStorage.setItem(
+    "esc2026-final",
+    JSON.stringify(scores)
+  );
+
+}
+
+function render(){
+
+  board.innerHTML = "";
+
+  countries.forEach(country=>{
+
+    const key = country.name;
+
+    if(!scores[key]){
+
+      scores[key] = {
+
+        song:0,
+        vocals:0,
+        staging:0,
+        place:""
+
+      };
+
+    }
+
+    const total =
+
+      scores[key].song +
+      scores[key].vocals +
+      scores[key].staging;
+
+    const row =
+      document.createElement("div");
+
+    row.className = "row";
+
+    row.innerHTML = `
+
+      <div class="rank">
+
+        <div class="number">
+
+          ${country.number}
+
+        </div>
+
+        <div class="flag">
+
+          ${country.flag}
+
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="country-name">
+
+          ${country.name}
+
+        </div>
+
+        <div class="song">
+
+          ${country.song}
+
+        </div>
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          min="0"
+          max="12"
+
+          value="${scores[key].song}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'song',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          min="0"
+          max="12"
+
+          value="${scores[key].vocals}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'vocals',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          min="0"
+          max="12"
+
+          value="${scores[key].staging}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'staging',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <div class="total">
+
+          ${total}
+
+        </div>
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          min="1"
+          max="25"
+
+          value="${scores[key].place}"
+
+          onchange="
+            updatePlace(
+              '${key}',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+    `;
+
+    board.appendChild(row);
+
+  });
+
+  save();
+
+}
+
+function updateScore(
+  country,
+  category,
+  value
+){
+
+  let score = Number(value);
+
+  if(score < 0) score = 0;
+  if(score > 12) score = 12;
+
+  scores[country][category] = score;
+
+  render();
+
+}
+
+function updatePlace(
+  country,
+  value
+){
+
+  let place = Number(value);
+
+  if(place < 1) place = 1;
+  if(place > 25) place = 25;
+
+  scores[country].place = place;
+
+  render();
+
+}
+
+function autoSort(){
+
+  const ranking = [];
+
+  countries.forEach(country=>{
+
+    const total =
+
+      scores[country.name].song +
+      scores[country.name].vocals +
+      scores[country.name].staging;
+
+    ranking.push({
+
+      name:country.name,
+      total
+
+    });
+
+  });
+
+  ranking.sort(
+    (a,b)=>b.total-a.total
+  );
+
+  ranking.forEach((entry,index)=>{
+
+    scores[entry.name].place =
+      index + 1;
+
+  });
+
+  render();
+
+}
+
+function showPrediction(){
+
+  const ranking = [];
+
+  countries.forEach(country=>{
+
+    ranking.push({
+
+      flag:country.flag,
+      name:country.name,
+      song:country.song,
+      place:
+        scores[country.name].place || 99
+
+    });
+
+  });
+
+  ranking.sort(
+    (a,b)=>a.place-b.place
+  );
+
+  const results =
+    document.getElementById("results");
+
+  results.innerHTML = "";
+
+  ranking.forEach(country=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "result-card";
+
+    card.innerHTML = `
+
+      <div class="result-left">
+
+        <div class="place">
+
+          ${country.place}
+
+        </div>
+
+        <div>
+
+          <div class="result-country">
+
+            ${country.flag}
+            ${country.name}
+
+          </div>
+
+          <div class="result-points">
+
+            ${country.song}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+    results.appendChild(card);
+
+  });
+
+  openOverlay();
+
+}
+
+function openOverlay(){
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+function closeOverlay(){
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+document
+.getElementById("overlay")
+.addEventListener("click",(e)=>{
+
+  if(e.target.id === "overlay"){
+
+    closeOverlay();
+
+  }
+
+});
+
+render();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<title>Eurovision 2026 Scoreboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+
+:root{
+  --bg:#060816;
+  --bg2:#0f1330;
+  --pink:#ff2f86;
+  --blue:#3ab8ff;
+  --purple:#8a5cff;
+  --card:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.09);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,0.72);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    "Montserrat",
+    system-ui,
+    sans-serif;
+
+  color:var(--text);
+
+  background:
+    radial-gradient(circle at top left,#ff008833,transparent 25%),
+    radial-gradient(circle at top right,#00aaff22,transparent 25%),
+    linear-gradient(180deg,#080b1d 0%, #050816 35%, #050611 100%);
+
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  background-image:
+    radial-gradient(rgba(255,255,255,0.16) 1px, transparent 1px);
+
+  background-size:4px 4px;
+  opacity:0.04;
+}
+
+.hero{
+  position:relative;
+  overflow:hidden;
+
+  padding:
+    calc(env(safe-area-inset-top) + 48px)
+    20px
+    40px;
+
+  text-align:center;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+
+  width:520px;
+  height:520px;
+
+  left:-180px;
+  top:-120px;
+
+  background:
+    radial-gradient(circle,#ff2f8644,transparent 70%);
+
+  filter:blur(40px);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+
+  width:520px;
+  height:520px;
+
+  right:-180px;
+  top:-120px;
+
+  background:
+    radial-gradient(circle,#00aaff33,transparent 70%);
+
+  filter:blur(40px);
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+
+  margin-bottom:18px;
+
+  padding:10px 18px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
+
+  font-size:0.85rem;
+  font-weight:700;
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+}
+
+.logo-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+
+  background:linear-gradient(
+    135deg,
+    var(--pink),
+    var(--blue)
+  );
+
+  box-shadow:0 0 20px var(--pink);
+}
+
+.esc{
+  font-size:clamp(3rem,10vw,6rem);
+  font-weight:800;
+  line-height:0.92;
+  letter-spacing:-4px;
+
+  text-shadow:
+    0 0 30px rgba(255,0,150,0.3);
+}
+
+.songcontest{
+  margin-top:10px;
+
+  font-size:clamp(0.9rem,3vw,1.4rem);
+  font-weight:700;
+
+  letter-spacing:6px;
+
+  opacity:0.92;
+}
+
+.vienna{
+  margin-top:20px;
+
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  padding:12px 20px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,47,134,0.16),
+      rgba(58,184,255,0.14)
+    );
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  font-size:0.9rem;
+  font-weight:700;
+  letter-spacing:5px;
+
+  color:#ffd4e8;
+}
+
+.container{
+  width:min(1400px,100%);
+  margin:0 auto;
+
+  padding:0 16px 32px;
+}
+
+.glass{
+  background:rgba(255,255,255,0.04);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  border-radius:28px;
+}
+
+.section{
+  padding:20px;
+}
+
+.section-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+
+  margin-bottom:18px;
+}
+
+.section-title{
+  font-size:clamp(1.4rem,5vw,2.2rem);
+  font-weight:800;
+
+  letter-spacing:-1px;
+}
+
+.storage{
+  padding:12px 16px;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  font-size:0.85rem;
+
+  color:var(--muted);
+}
+
+.board-wrap{
+  overflow:auto;
+  -webkit-overflow-scrolling:touch;
+
+  border-radius:24px;
+
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.board{
+  min-width:940px;
+}
+
+.header-row,
+.row{
+  display:grid;
+
+  grid-template-columns:
+    80px
+    minmax(220px,1.8fr)
+    110px
+    110px
+    110px
+    110px
+    90px;
+
+  align-items:center;
+}
+
+.header-row{
+  position:sticky;
+  top:0;
+  z-index:5;
+
+  padding:16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18,22,46,0.98),
+      rgba(11,14,29,0.98)
+    );
+
+  backdrop-filter:blur(12px);
+
+  font-size:0.74rem;
+  font-weight:700;
+
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:rgba(255,255,255,0.72);
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+}
+
+.row{
+  padding:14px 16px;
+
+  transition:0.18s ease;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.05);
+}
+
+.row:hover{
+  background:rgba(255,255,255,0.03);
+}
+
+.rank{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.number{
+  width:44px;
+  height:44px;
+
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--purple)
+    );
+
+  font-weight:800;
+
+  box-shadow:
+    0 0 24px rgba(255,47,134,0.28);
+}
+
+.flag{
+  font-size:1.8rem;
+  margin-right: 10px;
+}
+
+.country-name{
+  font-size:1.08rem;
+  font-weight:700;
+}
+
+.song{
+  margin-top:4px;
+
+  font-size:0.84rem;
+  line-height:1.3;
+
+  color:rgba(255,255,255,0.68);
+}
+
+.score-box,
+.final-box{
+  display:flex;
+  justify-content:center;
+}
+
+input[type="number"]{
+  width:74px;
+  height:48px;
+
+  border:none;
+  outline:none;
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:white;
+
+  text-align:center;
+
+  font-size:1.05rem;
+  font-weight:700;
+
+  transition:0.18s;
+}
+
+input[type="number"]:focus{
+  border-color:var(--pink);
+
+  box-shadow:
+    0 0 0 4px rgba(255,47,134,0.15);
+}
+
+.total{
+  width:74px;
+  height:48px;
+
+  border-radius:16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,47,134,0.16),
+      rgba(58,184,255,0.12)
+    );
+
+  font-weight:800;
+}
+
+input[type="checkbox"]{
+  width:24px;
+  height:24px;
+
+  accent-color:var(--pink);
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:14px;
+
+  margin-top:18px;
+}
+
+button{
+  border:none;
+  outline:none;
+
+  cursor:pointer;
+
+  transition:0.2s ease;
+}
+
+.reveal-btn{
+  height:64px;
+
+  border-radius:20px;
+
+  color:white;
+
+  font-size:1rem;
+  font-weight:800;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--purple)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(255,47,134,0.24);
+}
+
+.secondary{
+  background:
+    linear-gradient(
+      135deg,
+      #0077ff,
+      #00c6ff
+    );
+}
+
+.reveal-btn:hover{
+  transform:translateY(-2px);
+}
+
+.reveal-btn:active{
+  transform:scale(0.98);
+}
+
+.limit{
+  margin-top:14px;
+
+  text-align:center;
+
+  color:rgba(255,255,255,0.76);
+
+  font-size:0.92rem;
+}
+
+.limit span{
+  color:#ffd2e8;
+  font-weight:700;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+
+  z-index:999;
+
+  padding:24px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(0,0,0,0.9);
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:0.25s;
+}
+
+.overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.overlay-inner{
+  width:min(920px,100%);
+}
+
+.overlay-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:18px;
+}
+
+.overlay-title{
+  font-size:clamp(1.4rem,5vw,2rem);
+  font-weight:800;
+}
+
+.close-btn{
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.08);
+
+  color:white;
+
+  font-size:1.3rem;
+}
+
+.top10{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.top-card{
+  padding:18px;
+
+  border-radius:22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.04)
+    );
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:12px;
+}
+
+.top-country{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  font-weight:700;
+}
+
+.place{
+  width:44px;
+
+  font-size:1.8rem;
+  font-weight:800;
+
+  color:#ffd1e6;
+}
+
+.points{
+  font-weight:700;
+  color:rgba(255,255,255,0.74);
+}
+
+.footer{
+  padding:
+    28px
+    20px
+    calc(env(safe-area-inset-bottom) + 36px);
+
+  text-align:center;
+
+  color:rgba(255,255,255,0.6);
+
+  font-size:0.9rem;
+}
+
+::-webkit-scrollbar{
+  height:10px;
+  width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,0.18);
+  border-radius:999px;
+}
+
+@media(max-width:900px){
+
+  .section{
+    padding:16px;
+  }
+
+  .section-row{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .storage{
+    text-align:center;
+  }
+
+  .board-wrap{
+    margin-left:-16px;
+    margin-right:-16px;
+
+    border-radius:0;
+
+    border-left:none;
+    border-right:none;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .header-row,
+  .row{
+    min-width:860px;
+  }
+
+  .top10{
+    grid-template-columns:1fr;
+  }
+
+  .overlay{
+    padding:16px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+  <div class="hero-content">
+
+    <div class="logo">
+      <div class="logo-dot"></div>
+      ESC WATCH PARTY
+    </div>
+
+    <div class="esc">
+      Eurovision
+    </div>
+
+    <div class="songcontest">
+      SONG CONTEST
+    </div>
+
+    <div class="vienna">
+      ✨ VIENNA 2026 ✨
+    </div>
+
+  </div>
+
+</div>
+
+<div class="container">
+
+  <div class="glass section">
+
+    <div class="section-row">
+
+      <div class="section-title">
+        Erstes Halbfinale
+      </div>
+
+      <div class="storage">
+        🔒 Deine Scores bleiben nur auf deinem Gerät gespeichert
+      </div>
+
+    </div>
+
+    <div class="board-wrap">
+
+      <div class="board">
+
+        <div class="header-row">
+
+          <div>#</div>
+          <div>Land & Song</div>
+          <div>Song</div>
+          <div>Vocals</div>
+          <div>Staging</div>
+          <div>Gesamt</div>
+          <div>Finale</div>
+
+        </div>
+
+        <div id="board"></div>
+
+      </div>
+
+    </div>
+
+    <div class="actions">
+
+      <button
+        class="reveal-btn"
+        onclick="revealTop10()">
+
+        🏆 Reveal meine Top 10
+
+      </button>
+
+      <button
+        class="reveal-btn secondary"
+        onclick="revealFinalists()">
+
+        ✨ Nur Finalisten anzeigen
+
+      </button>
+
+    </div>
+
+    <div class="limit">
+      Du kannst <span>maximal 10 Länder</span> fürs Finale auswählen.
+    </div>
+
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+
+  <div class="overlay-inner">
+
+    <div class="overlay-header">
+
+      <div class="overlay-title">
+        ✨ Meine ESC Top 10 ✨
+      </div>
+
+      <button
+        class="close-btn"
+        onclick="closeOverlay()">
+
+        ✕
+
+      </button>
+
+    </div>
+
+    <div class="top10" id="top10"></div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  ♡ United by Music · ESC 2026 Watch Party
+</div>
+
+<script>
+
+const countries = [
+
+{
+flag:"🇲🇩",
+number:"01",
+name:"Moldau",
+song:"Satoshi – Viva Moldova"
+},
+
+{
+flag:"🇸🇪",
+number:"02",
+name:"Schweden",
+song:"Felicia – My System"
+},
+
+{
+flag:"🇭🇷",
+number:"03",
+name:"Kroatien",
+song:"Lelek – Andromeda"
+},
+
+{
+flag:"🇬🇷",
+number:"04",
+name:"Griechenland",
+song:"Akylao – Ferto"
+},
+
+{
+flag:"🇵🇹",
+number:"05",
+name:"Portugal",
+song:"Bandido do Cante – Rosa"
+},
+
+{
+flag:"🇬🇪",
+number:"06",
+name:"Georgien",
+song:"Bzikebi – On Replay"
+},
+
+{
+flag:"🇫🇮",
+number:"07",
+name:"Finnland",
+song:"Linda Lampenius – Liekinheitin"
+},
+
+{
+flag:"🇲🇪",
+number:"08",
+name:"Montenegro",
+song:"Tamara Živković – Nova zora"
+},
+
+{
+flag:"🇪🇪",
+number:"09",
+name:"Estland",
+song:"Vanilla Ninja – Too Epic To Be True"
+},
+
+{
+flag:"🇮🇱",
+number:"10",
+name:"Israel",
+song:"Noam Cohen – Michelle"
+},
+
+{
+flag:"🇧🇪",
+number:"11",
+name:"Belgien",
+song:"Essyla – Dancing on the Ice"
+},
+
+{
+flag:"🇱🇹",
+number:"12",
+name:"Litauen",
+song:"Lion Cecchah – Sólo quiero más"
+},
+
+{
+flag:"🇸🇲",
+number:"13",
+name:"San Marino",
+song:"Senhit feat. Boy George – Superstar"
+},
+
+{
+flag:"🇵🇱",
+number:"14",
+name:"Polen",
+song:"Aicja – Pray"
+},
+
+{
+flag:"🇷🇸",
+number:"15",
+name:"Serbien",
+song:"Lavina – Kraj mene"
+}
+
+];
+
+let scores =
+JSON.parse(
+  localStorage.getItem("esc2026-semi1")
+) || {};
+
+const board =
+document.getElementById("board");
+
+function saveScores(){
+
+  localStorage.setItem(
+    "esc2026-semi1",
+    JSON.stringify(scores)
+  );
+
+}
+
+function render(){
+
+  board.innerHTML = "";
+
+  countries.forEach(country=>{
+
+    const key = country.name;
+
+    if(!scores[key]){
+
+      scores[key] = {
+        song:0,
+        vocals:0,
+        staging:0,
+        final:false
+      };
+
+    }
+
+    const total =
+      scores[key].song +
+      scores[key].vocals +
+      scores[key].staging;
+
+    const row =
+    document.createElement("div");
+
+    row.className = "row";
+
+    row.innerHTML = `
+
+      <div class="rank">
+
+        <div class="number">
+          ${country.number}
+        </div>
+
+        <div class="flag">
+          ${country.flag}
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="country-name">
+          ${country.name}
+        </div>
+
+        <div class="song">
+          ${country.song}
+        </div>
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          inputmode="numeric"
+          min="0"
+          max="12"
+
+          value="${scores[key].song}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'song',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          inputmode="numeric"
+          min="0"
+          max="12"
+
+          value="${scores[key].vocals}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'vocals',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <input
+          type="number"
+          inputmode="numeric"
+          min="0"
+          max="12"
+
+          value="${scores[key].staging}"
+
+          onchange="
+            updateScore(
+              '${key}',
+              'staging',
+              this.value
+            )
+          "
+        >
+
+      </div>
+
+      <div class="score-box">
+
+        <div class="total">
+          ${total}
+        </div>
+
+      </div>
+
+      <div class="final-box">
+
+        <input
+          type="checkbox"
+
+          ${scores[key].final
+            ? "checked"
+            : ""
+          }
+
+          onchange="
+            toggleFinal(
+              '${key}',
+              this.checked
+            )
+          "
+        >
+
+      </div>
+
+    `;
+
+    board.appendChild(row);
+
+  });
+
+  saveScores();
+
+}
+
+function updateScore(
+  country,
+  category,
+  value
+){
+
+  let score = Number(value);
+
+  if(score < 0) score = 0;
+  if(score > 12) score = 12;
+
+  scores[country][category] = score;
+
+  render();
+
+}
+
+function toggleFinal(
+  country,
+  checked
+){
+
+  const finalists =
+    Object.values(scores)
+    .filter(s => s.final)
+    .length;
+
+  if(
+    checked &&
+    finalists >= 10
+  ){
+
+    alert(
+      "Du kannst maximal 10 Länder auswählen."
+    );
+
+    render();
+
+    return;
+  }
+
+  scores[country].final = checked;
+
+  render();
+
+}
+
+function getRanking(finalistsOnly=false){
+
+  const ranking = [];
+
+  countries.forEach(country=>{
+
+    const score = scores[country.name];
+
+    const total =
+      score.song +
+      score.vocals +
+      score.staging;
+
+    if(finalistsOnly && !score.final){
+      return;
+    }
+
+    ranking.push({
+      flag:country.flag,
+      name:country.name,
+      total,
+      final:score.final
+    });
+
+  });
+
+  return ranking.sort(
+    (a,b)=>b.total-a.total
+  );
+
+}
+
+function revealTop10(){
+
+  const ranking =
+    getRanking(true);
+
+  const top10 =
+    document.getElementById("top10");
+
+  top10.innerHTML = "";
+
+  ranking.forEach((country,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className = "top-card";
+
+    card.innerHTML = `
+
+      <div class="top-country">
+
+        <div class="place">
+          ${index + 1}
+        </div>
+
+        <div>
+          ${country.flag} ${country.name}
+        </div>
+
+      </div>
+
+      <div class="points">
+        ${country.total} Punkte
+      </div>
+
+    `;
+
+    top10.appendChild(card);
+
+  });
+
+  openOverlay();
+
+}
+
+function revealFinalists(){
+
+  const ranking =
+    getRanking(true);
+
+  const top10 =
+    document.getElementById("top10");
+
+  top10.innerHTML = "";
+
+  ranking.forEach((country,index)=>{
+
+    const card =
+      document.createElement("div");
+
+    card.className = "top-card";
+
+    card.innerHTML = `
+
+      <div class="top-country">
+
+        <div class="place">
+          ${index + 1}
+        </div>
+
+        <div>
+          ${country.flag} ${country.name}
+        </div>
+
+      </div>
+
+      <div class="points">
+        FINALIST
+      </div>
+
+    `;
+
+    top10.appendChild(card);
+
+  });
+
+  openOverlay();
+
+}
+
+function openOverlay(){
+
+  document
+    .getElementById("overlay")
+    .classList.add("show");
+
+  document.body.style.overflow = "hidden";
+
+}
+
+function closeOverlay(){
+
+  document
+    .getElementById("overlay")
+    .classList.remove("show");
+
+  document.body.style.overflow = "";
+
+}
+
+document
+.getElementById("overlay")
+.addEventListener("click",(e)=>{
+
+  if(e.target.id === "overlay"){
+    closeOverlay();
+  }
+
+});
+
+document.addEventListener(
+  "keydown",
+  (e)=>{
+
+    if(e.key === "Escape"){
+      closeOverlay();
+    }
+
+  }
+);
+
+render();
+
+</script>
+
+</body>
+</html>

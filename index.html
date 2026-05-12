@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8" />
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<title>
+ESC 2026 Watch Party
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+rel="stylesheet"
+/>
+
+<style>
+
+:root{
+
+  --pink:#ff2f86;
+  --blue:#35c2ff;
+  --purple:#8b5cff;
+  --bg:#050816;
+  --card:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);
+
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+
+  font-family:
+    "Montserrat",
+    sans-serif;
+
+  color:white;
+
+  min-height:100vh;
+
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(circle at top left,#ff008833,transparent 25%),
+    radial-gradient(circle at top right,#00aaff22,transparent 25%),
+    linear-gradient(
+      180deg,
+      #090b1f 0%,
+      #060816 35%,
+      #04040d 100%
+    );
+
+  position:relative;
+}
+
+body::before{
+
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,0.16) 1px,
+      transparent 1px
+    );
+
+  background-size:4px 4px;
+
+  opacity:0.04;
+}
+
+.glow{
+
+  position:fixed;
+
+  width:500px;
+  height:500px;
+
+  border-radius:50%;
+
+  filter:blur(90px);
+
+  pointer-events:none;
+}
+
+.glow1{
+
+  top:-150px;
+  left:-100px;
+
+  background:#ff008855;
+}
+
+.glow2{
+
+  bottom:-200px;
+  right:-100px;
+
+  background:#00aaff33;
+}
+
+.container{
+
+  width:min(1100px,100%);
+  margin:0 auto;
+
+  padding:
+    calc(env(safe-area-inset-top) + 50px)
+    20px
+    calc(env(safe-area-inset-bottom) + 40px);
+
+  position:relative;
+  z-index:2;
+}
+
+.hero{
+
+  text-align:center;
+}
+
+.logo{
+
+  display:inline-flex;
+
+  align-items:center;
+  gap:12px;
+
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,0.06);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  margin-bottom:30px;
+
+  font-size:0.9rem;
+  font-weight:700;
+
+  letter-spacing:2px;
+}
+
+.dot{
+
+  width:10px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--pink),
+      var(--blue)
+    );
+
+  box-shadow:
+    0 0 20px var(--pink);
+}
+
+.title{
+
+  font-size:
+    clamp(3.5rem,11vw,7rem);
+
+  font-weight:800;
+
+  line-height:0.9;
+
+  letter-spacing:-5px;
+
+  text-shadow:
+    0 0 40px rgba(255,0,150,0.25);
+}
+
+.subtitle{
+
+  margin-top:14px;
+
+  font-size:
+    clamp(0.9rem,2vw,1.2rem);
+
+  letter-spacing:8px;
+
+  opacity:0.82;
+}
+
+.tagline{
+
+  margin-top:24px;
+
+  display:inline-flex;
+
+  align-items:center;
+  gap:10px;
+
+  padding:14px 22px;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,47,134,0.16),
+      rgba(53,194,255,0.12)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  font-size:0.9rem;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+}
+
+.cards{
+
+  margin-top:60px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:22px;
+}
+
+.card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  text-decoration:none;
+
+  color:white;
+
+  padding:28px;
+
+  border-radius:32px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.04)
+    );
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  transition:0.22s ease;
+}
+
+.card::before{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-40%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.12),
+      transparent 60%
+    );
+
+  opacity:0;
+
+  transition:0.25s;
+}
+
+.card:hover{
+
+  transform:
+    translateY(-6px);
+
+  box-shadow:
+    0 18px 50px rgba(255,47,134,0.16);
+}
+
+.card:hover::before{
+  opacity:1;
+}
+
+.card-icon{
+
+  font-size:2.8rem;
+}
+
+.card-title{
+
+  margin-top:26px;
+
+  font-size:1.6rem;
+
+  font-weight:800;
+
+  line-height:1.1;
+}
+
+.card-sub{
+
+  margin-top:12px;
+
+  line-height:1.6;
+
+  color:
+    rgba(255,255,255,0.72);
+
+  font-size:0.95rem;
+}
+
+.card-arrow{
+
+  margin-top:26px;
+
+  font-size:1rem;
+
+  font-weight:700;
+
+  color:#ffd3ea;
+}
+
+.footer{
+
+  margin-top:60px;
+
+  text-align:center;
+
+  opacity:0.58;
+
+  font-size:0.9rem;
+
+  line-height:1.7;
+}
+
+@media(max-width:900px){
+
+  .container{
+
+    padding:
+      calc(env(safe-area-inset-top) + 36px)
+      16px
+      calc(env(safe-area-inset-bottom) + 40px);
+  }
+
+  .title{
+
+    letter-spacing:-3px;
+  }
+
+  .subtitle{
+
+    letter-spacing:4px;
+  }
+
+  .tagline{
+
+    font-size:0.78rem;
+
+    letter-spacing:2px;
+
+    padding:12px 18px;
+  }
+
+  .cards{
+
+    grid-template-columns:1fr;
+
+    margin-top:42px;
+
+    gap:16px;
+  }
+
+  .card{
+
+    padding:24px;
+
+    border-radius:26px;
+  }
+
+  .card-title{
+
+    margin-top:18px;
+
+    font-size:1.35rem;
+  }
+
+  .card-sub{
+
+    font-size:0.9rem;
+  }
+
+  .footer{
+
+    margin-top:40px;
+
+    font-size:0.82rem;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="container">
+
+  <div class="hero">
+
+    <div class="logo">
+
+      <div class="dot"></div>
+
+      ESC WATCH PARTY
+
+    </div>
+
+    <div class="title">
+
+      Eurovision
+
+    </div>
+
+    <div class="subtitle">
+
+      VIENNA 2026
+
+    </div>
+
+    <div class="tagline">
+
+      ✨ UNITED BY MUSIC ✨
+
+    </div>
+
+  </div>
+
+  <div class="cards">
+
+    <a
+      class="card"
+      href="first-semi.html">
+
+      <div class="card-icon">
+        ✨
+      </div>
+
+      <div class="card-title">
+        Erstes Halbfinale
+      </div>
+
+      <div class="card-sub">
+
+        Bewerte Songs, Vocals und Staging
+        und wähle deine Finalisten.
+
+      </div>
+
+      <div class="card-arrow">
+        Zum Scoreboard →
+      </div>
+
+    </a>
+
+    <a
+      class="card"
+      href="second-semi.html">
+
+      <div class="card-icon">
+        🌙
+      </div>
+
+      <div class="card-title">
+        Zweites Halbfinale
+      </div>
+
+      <div class="card-sub">
+
+        Dein zweites ESC Ranking
+        mit allen Ländern des Semi 2.
+
+      </div>
+
+      <div class="card-arrow">
+        Zum Scoreboard →
+      </div>
+
+    </a>
+
+    <a
+      class="card"
+      href="final.html">
+
+      <div class="card-icon">
+        🏆
+      </div>
+
+      <div class="card-title">
+        Grand Final
+      </div>
+
+      <div class="card-sub">
+
+        Das große Finale —
+        entscheide deinen Sieger von ESC 2026.
+
+      </div>
+
+      <div class="card-arrow">
+        Zum Scoreboard →
+      </div>
+
+    </a>
+
+  </div>
+
+  <div class="footer">
+
+    ♡ Made for Eurovision night with friends<br>
+    ESC 2026 · Vienna · United by Music
+
+  </div>
+
+</div>
+
+</body>
+</html>
