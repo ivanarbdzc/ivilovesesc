@@ -31,10 +31,9 @@ body{
     radial-gradient(circle at 90% 60%,rgba(58,184,255,0.08),transparent 40%),
     linear-gradient(180deg,#080a1a 0%,#04060f 40%,#030510 100%);
   min-height:100vh;
-  overflow-x:hidden;
 }
 body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;
   background-image:
     radial-gradient(rgba(255,255,255,0.9) 1px,transparent 1px),
     radial-gradient(rgba(255,255,255,0.5) 1px,transparent 1px);
@@ -43,7 +42,7 @@ body::before{
   opacity:0.035;
 }
 body::after{
-  content:"";position:fixed;inset:0;pointer-events:none;
+  content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(105deg,transparent 40%,rgba(255,215,0,0.025) 50%,transparent 60%);
   background-size:200% 200%;
   animation:shimmer 8s linear infinite;
@@ -167,7 +166,7 @@ body::after{
   border:1px solid rgba(255,215,0,0.20);
   font-weight:800;font-size:0.82rem;color:var(--gold);flex-shrink:0;
 }
-.flag{font-size:1.7rem;margin-right:8px;}
+.flag{font-size:1.7rem;margin-right:16px;}
 .country-name{font-size:1rem;font-weight:700;}
 .song{margin-top:3px;font-size:0.78rem;color:rgba(255,255,255,0.55);}
 .placeholder-text{font-style:italic;font-size:0.82rem;font-weight:500;color:rgba(255,215,0,0.40);}
@@ -208,7 +207,7 @@ input[type="number"]:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(25
 }
 .m-card.has-score{border-color:rgba(255,215,0,0.28);}
 .m-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.m-flag{font-size:2rem;}
+.m-flag{font-size:2rem;margin-right:8px;}
 .m-country{flex:1;}
 .m-country-name{font-size:1.05rem;font-weight:800;}
 .m-song{font-size:0.76rem;color:rgba(255,255,255,0.55);margin-top:2px;line-height:1.35;}
@@ -344,7 +343,7 @@ button{border:none;outline:none;cursor:pointer;transition:0.2s ease;font-family:
 </style>
 </head>
 <body>
-
+<div style="overflow-x:hidden;width:100%;min-height:100vh;">
 <div class="hero">
   <div class="hero-content">
     <div class="logo"><div class="logo-dot"></div>ESC WATCH PARTY</div>
@@ -415,32 +414,32 @@ button{border:none;outline:none;cursor:pointer;transition:0.2s ease;font-family:
 <div class="footer">♡ United by Music &nbsp;·&nbsp; ESC 2026 Grand Final Watch Party</div>
 
 <script>
-const countries=[
-  {flag:"🏳️",number:"01",name:"Finalist 1",placeholder:true},
-  {flag:"🏳️",number:"02",name:"Finalist 2",placeholder:true},
-  {flag:"🏳️",number:"03",name:"Finalist 3",placeholder:true},
-  {flag:"🏳️",number:"04",name:"Finalist 4",placeholder:true},
-  {flag:"🏳️",number:"05",name:"Finalist 5",placeholder:true},
-  {flag:"🏳️",number:"06",name:"Finalist 6",placeholder:true},
-  {flag:"🏳️",number:"07",name:"Finalist 7",placeholder:true},
-  {flag:"🏳️",number:"08",name:"Finalist 8",placeholder:true},
-  {flag:"🏳️",number:"09",name:"Finalist 9",placeholder:true},
-  {flag:"🏳️",number:"10",name:"Finalist 10",placeholder:true},
-  {flag:"🏳️",number:"11",name:"Finalist 11",placeholder:true},
-  {flag:"🏳️",number:"12",name:"Finalist 12",placeholder:true},
-  {flag:"🏳️",number:"13",name:"Finalist 13",placeholder:true},
-  {flag:"🏳️",number:"14",name:"Finalist 14",placeholder:true},
-  {flag:"🏳️",number:"15",name:"Finalist 15",placeholder:true},
-  {flag:"🏳️",number:"16",name:"Finalist 16",placeholder:true},
-  {flag:"🏳️",number:"17",name:"Finalist 17",placeholder:true},
-  {flag:"🏳️",number:"18",name:"Finalist 18",placeholder:true},
-  {flag:"🏳️",number:"19",name:"Finalist 19",placeholder:true},
-  {flag:"🏳️",number:"20",name:"Finalist 20",placeholder:true},
-  {flag:"🇩🇪",number:"21",name:"Deutschland",song:"Abor & Tynna – Baller",placeholder:false},
-  {flag:"🇫🇷",number:"22",name:"Frankreich",song:"Louane – Maman",placeholder:false},
-  {flag:"🇬🇧",number:"23",name:"United Kingdom",song:"Remember Monday – What The Hell Just Happened?",placeholder:false},
-  {flag:"🇮🇹",number:"24",name:"Italien",song:"Lucio Corsi – Volevo essere un duro",placeholder:false},
-  {flag:"🇪🇸",number:"25",name:"Spanien",song:"Melody – Esa diva",placeholder:false},
+const countries = [
+  {flag:"🇩🇰",number:"01",name:"Denmark",song:"Søren Torpegaard Lund - Før Vi Går Hjem",placeholder:false},
+  {flag:"🇩🇪",number:"02",name:"Germany",song:"Sarah Engels - Fire",placeholder:false},
+  {flag:"🇮🇱",number:"03",name:"Israel",song:"Noam Bettan - Michelle",placeholder:false},
+  {flag:"🇧🇪",number:"04",name:"Belgium",song:"ESSYLA - Dancing on the Ice",placeholder:false},
+  {flag:"🇦🇱",number:"05",name:"Albania",song:"Alis - Nân",placeholder:false},
+  {flag:"🇬🇷",number:"06",name:"Greece",song:"Akylas - Ferto",placeholder:false},
+  {flag:"🇺🇦",number:"07",name:"Ukraine",song:"LELÉKA - Ridnym",placeholder:false},
+  {flag:"🇦🇺",number:"08",name:"Australia",song:"Delta Goodrem - Eclipse",placeholder:false},
+  {flag:"🇷🇸",number:"09",name:"Serbia",song:"LAVINA - Kraj Mene",placeholder:false},
+  {flag:"🇲🇹",number:"10",name:"Malta",song:"AIDAN - Bella",placeholder:false},
+  {flag:"🇨🇿",number:"11",name:"Czechia",song:"Daniel Zizka - CROSSROADS",placeholder:false},
+  {flag:"🇧🇬",number:"12",name:"Bulgaria",song:"DARA - Bangaranga",placeholder:false},
+  {flag:"🇭🇷",number:"13",name:"Croatia",song:"LELEK - Andromeda",placeholder:false},
+  {flag:"🇬🇧",number:"14",name:"United Kingdom",song:"LOOK MUM NO COMPUTER - Eins, Zwei, Drei",placeholder:false},
+  {flag:"🇫🇷",number:"15",name:"France",song:"Monroe - Regarde !",placeholder:false},
+  {flag:"🇲🇩",number:"16",name:"Moldova",song:"Satoshi - Viva, Moldova!",placeholder:false},
+  {flag:"🇫🇮",number:"17",name:"Finland",song:"Linda Lampenius x Pete Parkkonen - Liekinheitin",placeholder:false},
+  {flag:"🇵🇱",number:"18",name:"Poland",song:"ALICJA - Pray",placeholder:false},
+  {flag:"🇱🇹",number:"19",name:"Lithuania",song:"Lion Ceccah - Sólo Quiero Más",placeholder:false},
+  {flag:"🇸🇪",number:"20",name:"Sweden",song:"FELICIA - My System",placeholder:false},
+  {flag:"🇨🇾",number:"21",name:"Cyprus",song:"Antigoni - JALLA",placeholder:false},
+  {flag:"🇮🇹",number:"22",name:"Italy",song:"Sal Da Vinci - Per Sempre Sì",placeholder:false},
+  {flag:"🇳🇴",number:"23",name:"Norway",song:"JONAS LOVV - YA YA YA",placeholder:false},
+  {flag:"🇷🇴",number:"24",name:"Romania",song:"Alexandra Căpitănescu - Choke Me",placeholder:false},
+  {flag:"🇦🇹",number:"25",name:"Austria",song:"COSMÓ - Tanzschein",placeholder:false},
 ];
 
 let scores=JSON.parse(localStorage.getItem("esc2026-finale"))||{};
@@ -680,521 +679,6 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape") closeOverlay();});
 
 render();
 </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Eurovision 2026 Scoreboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<style>
-:root{
-  --bg:#060816;
-  --pink:#ff2f86;
-  --blue:#3ab8ff;
-  --purple:#8a5cff;
-  --card:rgba(255,255,255,0.07);
-  --border:rgba(255,255,255,0.09);
-  --text:#ffffff;
-  --muted:rgba(255,255,255,0.72);
-}
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:"Montserrat",system-ui,sans-serif;
-  color:var(--text);
-  background:
-    radial-gradient(circle at top left,#ff008833,transparent 25%),
-    radial-gradient(circle at top right,#00aaff22,transparent 25%),
-    linear-gradient(180deg,#080b1d 0%,#050816 35%,#050611 100%);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,0.16) 1px,transparent 1px);
-  background-size:4px 4px;
-  opacity:0.04;
-}
-
-/* HERO */
-.hero{
-  position:relative;
-  overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 40px) 20px 32px;
-  text-align:center;
-}
-.hero::before{
-  content:"";position:absolute;width:520px;height:520px;left:-180px;top:-120px;
-  background:radial-gradient(circle,#ff2f8644,transparent 70%);filter:blur(40px);
-}
-.hero::after{
-  content:"";position:absolute;width:520px;height:520px;right:-180px;top:-120px;
-  background:radial-gradient(circle,#00aaff33,transparent 70%);filter:blur(40px);
-}
-.hero-content{position:relative;z-index:2;}
-.logo{
-  display:inline-flex;align-items:center;gap:12px;
-  margin-bottom:16px;padding:8px 16px;border-radius:999px;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-}
-.logo-dot{
-  width:9px;height:9px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pink),var(--blue));
-  box-shadow:0 0 20px var(--pink);
-}
-.esc{
-  font-size:clamp(2.8rem,10vw,6rem);font-weight:800;line-height:0.92;letter-spacing:-4px;
-  text-shadow:0 0 30px rgba(255,0,150,0.3);
-}
-.songcontest{margin-top:10px;font-size:clamp(0.85rem,3vw,1.4rem);font-weight:700;letter-spacing:6px;opacity:0.92;}
-.vienna{
-  margin-top:18px;display:inline-flex;align-items:center;gap:10px;
-  padding:10px 18px;border-radius:999px;
-  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.14));
-  border:1px solid rgba(255,255,255,0.08);
-  font-size:0.85rem;font-weight:700;letter-spacing:4px;color:#ffd4e8;
-}
-
-/* CONTAINER & GLASS */
-.container{width:min(1400px,100%);margin:0 auto;padding:0 14px 40px;}
-.glass{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(18px);border-radius:24px;
-}
-.section{padding:18px;}
-.section-row{
-  display:flex;justify-content:space-between;align-items:center;gap:14px;
-  margin-bottom:16px;flex-wrap:wrap;
-}
-.section-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;letter-spacing:-1px;}
-.storage{
-  padding:10px 14px;border-radius:16px;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  font-size:0.8rem;color:var(--muted);
-}
-
-/* ── DESKTOP TABLE ── */
-.board-wrap{
-  overflow:auto;-webkit-overflow-scrolling:touch;
-  border-radius:20px;border:1px solid rgba(255,255,255,0.08);
-}
-.board{min-width:860px;}
-.header-row,.row{
-  display:grid;
-  grid-template-columns:76px minmax(200px,1.8fr) 100px 100px 100px 100px 84px;
-  align-items:center;
-}
-.header-row{
-  position:sticky;top:0;z-index:5;padding:14px 16px;
-  background:linear-gradient(180deg,rgba(18,22,46,0.98),rgba(11,14,29,0.98));
-  backdrop-filter:blur(12px);
-  font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  color:rgba(255,255,255,0.72);border-bottom:1px solid rgba(255,255,255,0.08);
-}
-.row{
-  padding:12px 16px;transition:0.18s ease;
-  border-bottom:1px solid rgba(255,255,255,0.05);
-}
-.row:hover{background:rgba(255,255,255,0.03);}
-.rank{display:flex;align-items:center;gap:10px;}
-.number{
-  width:40px;height:40px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  font-weight:800;font-size:0.85rem;
-  box-shadow:0 0 20px rgba(255,47,134,0.28);
-  flex-shrink:0;
-}
-.flag{font-size:1.7rem;margin-right:8px;}
-.country-name{font-size:1rem;font-weight:700;}
-.song{margin-top:3px;font-size:0.8rem;line-height:1.3;color:rgba(255,255,255,0.65);}
-.score-box,.final-box{display:flex;justify-content:center;}
-input[type="number"]{
-  width:70px;height:46px;border:none;outline:none;border-radius:14px;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-  color:white;text-align:center;font-size:1rem;font-weight:700;
-  font-family:"Montserrat",sans-serif;transition:0.18s;
-}
-input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,47,134,0.15);}
-.total{
-  width:70px;height:46px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;font-weight:800;
-  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.12));
-}
-input[type="checkbox"]{width:24px;height:24px;accent-color:var(--pink);}
-
-/* ── MOBILE CARDS ── */
-.mobile-cards{display:none;}
-.m-card{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
-  border-radius:20px;padding:16px;margin-bottom:12px;
-}
-.m-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.m-flag{font-size:2rem;}
-.m-country{flex:1;}
-.m-country-name{font-size:1.05rem;font-weight:800;}
-.m-song{font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:2px;line-height:1.35;}
-.m-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
-.m-field label{display:block;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;text-align:center;}
-.m-field input[type="number"]{
-  width:100%;height:52px;border:none;outline:none;border-radius:14px;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
-  color:white;text-align:center;font-size:1.1rem;font-weight:800;
-  font-family:"Montserrat",sans-serif;transition:0.18s;
-}
-.m-field input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,47,134,0.18);}
-.m-footer{
-  display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;
-}
-.m-total-wrap{display:flex;align-items:center;gap:10px;}
-.m-total-label{font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
-.m-total-val{
-  min-width:54px;height:44px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;
-  background:linear-gradient(135deg,rgba(255,47,134,0.18),rgba(58,184,255,0.14));
-}
-.m-finalist{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.m-finalist-label{font-size:0.8rem;font-weight:700;color:var(--muted);}
-.m-finalist input[type="checkbox"]{
-  width:26px;height:26px;accent-color:var(--pink);cursor:pointer;
-  flex-shrink:0;
-}
-
-/* ACTIONS */
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
-button{border:none;outline:none;cursor:pointer;transition:0.2s ease;}
-.reveal-btn{
-  height:60px;border-radius:18px;color:white;font-size:0.95rem;font-weight:800;
-  font-family:"Montserrat",sans-serif;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  box-shadow:0 8px 28px rgba(255,47,134,0.22);
-}
-.secondary{background:linear-gradient(135deg,#0077ff,#00c6ff);}
-.reveal-btn:hover{transform:translateY(-2px);}
-.reveal-btn:active{transform:scale(0.97);}
-.limit{margin-top:12px;text-align:center;color:rgba(255,255,255,0.72);font-size:0.88rem;}
-.limit span{color:#ffd2e8;font-weight:700;}
-
-/* OVERLAY */
-.overlay{
-  position:fixed;inset:0;z-index:999;
-  padding:24px;display:none;flex-direction:column;
-  align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.88);
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-}
-.overlay.show{display:flex;}
-.overlay-inner{width:min(920px,100%);}
-.overlay-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.overlay-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;}
-.close-btn{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(255,255,255,0.1);color:white;font-size:1.2rem;
-  font-family:"Montserrat",sans-serif;flex-shrink:0;
-}
-.top10{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.top-card{
-  padding:16px;border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.04));
-  border:1px solid rgba(255,255,255,0.09);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-}
-.top-country{display:flex;align-items:center;gap:12px;font-weight:700;}
-.place{width:40px;font-size:1.6rem;font-weight:800;color:#ffd1e6;flex-shrink:0;}
-.points{font-weight:700;color:rgba(255,255,255,0.7);white-space:nowrap;}
-
-/* FOOTER */
-.footer{
-  padding:28px 20px calc(env(safe-area-inset-bottom) + 32px);
-  text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem;
-}
-
-::-webkit-scrollbar{height:8px;width:8px;}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.16);border-radius:999px;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:700px){
-  .board-wrap{display:none;}
-  .mobile-cards{display:block;}
-  .section{padding:14px;}
-  .section-row{flex-direction:column;align-items:stretch;}
-  .storage{text-align:center;font-size:0.78rem;}
-  .actions{grid-template-columns:1fr;}
-  .reveal-btn{height:56px;}
-  .top10{grid-template-columns:1fr;}
-  .overlay{padding:14px;}
-  .overlay-title{font-size:1.3rem;}
-}
-@media(max-width:380px){
-  .m-inputs{grid-template-columns:1fr 1fr 1fr;}
-  .m-field input[type="number"]{height:48px;font-size:1rem;}
-}
-</style>
-</head>
-<body>
-
-<div class="hero">
-  <div class="hero-content">
-    <div class="logo"><div class="logo-dot"></div>ESC WATCH PARTY</div>
-    <div class="esc">Eurovision</div>
-    <div class="songcontest">SONG CONTEST</div>
-    <div class="vienna">✨ VIENNA 2026 ✨</div>
-  </div>
 </div>
-
-<div class="container">
-  <div class="glass section">
-
-    <div class="section-row">
-      <div class="section-title">Erstes Halbfinale</div>
-      <div class="storage">🔒 Scores nur auf deinem Gerät gespeichert</div>
-    </div>
-
-    <!-- DESKTOP TABLE -->
-    <div class="board-wrap">
-      <div class="board">
-        <div class="header-row">
-          <div>#</div>
-          <div>Land &amp; Song</div>
-          <div style="text-align:center">Song</div>
-          <div style="text-align:center">Vocals</div>
-          <div style="text-align:center">Staging</div>
-          <div style="text-align:center">Gesamt</div>
-          <div style="text-align:center">Finale</div>
-        </div>
-        <div id="board-desktop"></div>
-      </div>
-    </div>
-
-    <!-- MOBILE CARDS -->
-    <div class="mobile-cards" id="board-mobile"></div>
-
-    <div class="actions">
-      <button class="reveal-btn" onclick="revealTop10()">🏆 Meine Top 10</button>
-      <button class="reveal-btn secondary" onclick="revealFinalists()">✨ Finalisten</button>
-    </div>
-
-    <div class="limit">Max. <span>10 Länder</span> fürs Finale wählen</div>
-  </div>
-</div>
-
-<div class="overlay" id="overlay">
-  <div class="overlay-inner">
-    <div class="overlay-header">
-      <div class="overlay-title" id="overlay-title">✨ Meine ESC Top 10 ✨</div>
-      <button class="close-btn" onclick="closeOverlay()">✕</button>
-    </div>
-    <div class="top10" id="top10"></div>
-  </div>
-</div>
-
-<div class="footer">♡ United by Music · ESC 2026 Watch Party</div>
-
-<script>
-const countries=[
-  {flag:"🇲🇩",number:"01",name:"Moldau",song:"Satoshi – Viva Moldova"},
-  {flag:"🇸🇪",number:"02",name:"Schweden",song:"Felicia – My System"},
-  {flag:"🇭🇷",number:"03",name:"Kroatien",song:"Lelek – Andromeda"},
-  {flag:"🇬🇷",number:"04",name:"Griechenland",song:"Akylao – Ferto"},
-  {flag:"🇵🇹",number:"05",name:"Portugal",song:"Bandido do Cante – Rosa"},
-  {flag:"🇬🇪",number:"06",name:"Georgien",song:"Bzikebi – On Replay"},
-  {flag:"🇫🇮",number:"07",name:"Finnland",song:"Linda Lampenius – Liekinheitin"},
-  {flag:"🇲🇪",number:"08",name:"Montenegro",song:"Tamara Živković – Nova zora"},
-  {flag:"🇪🇪",number:"09",name:"Estland",song:"Vanilla Ninja – Too Epic To Be True"},
-  {flag:"🇮🇱",number:"10",name:"Israel",song:"Noam Cohen – Michelle"},
-  {flag:"🇧🇪",number:"11",name:"Belgien",song:"Essyla – Dancing on the Ice"},
-  {flag:"🇱🇹",number:"12",name:"Litauen",song:"Lion Cecchah – Sólo quiero más"},
-  {flag:"🇸🇲",number:"13",name:"San Marino",song:"Senhit feat. Boy George – Superstar"},
-  {flag:"🇵🇱",number:"14",name:"Polen",song:"Aicja – Pray"},
-  {flag:"🇷🇸",number:"15",name:"Serbien",song:"Lavina – Kraj mene"}
-];
-
-let scores=JSON.parse(localStorage.getItem("esc2026-semi1"))||{};
-
-function save(){localStorage.setItem("esc2026-semi1",JSON.stringify(scores));}
-
-function ensureScore(key){
-  if(!scores[key]) scores[key]={song:0,vocals:0,staging:0,final:false};
-}
-
-function updateScore(country,cat,val){
-  let v=Number(val);if(v<0)v=0;if(v>12)v=12;
-  scores[country][cat]=v;
-  save();renderTotals();
-}
-
-function toggleFinal(country,checked){
-  const count=Object.values(scores).filter(s=>s.final).length;
-  if(checked&&count>=10){
-    alert("Du kannst maximal 10 Länder auswählen.");
-    render();return;
-  }
-  scores[country].final=checked;
-  save();renderTotals();
-}
-
-function renderTotals(){
-  countries.forEach(c=>{
-    const key=c.name;
-    const t=(scores[key].song||0)+(scores[key].vocals||0)+(scores[key].staging||0);
-    // update desktop total
-    const dtEl=document.getElementById("dt-total-"+key);
-    if(dtEl) dtEl.textContent=t;
-    // update mobile total
-    const mtEl=document.getElementById("mt-total-"+key);
-    if(mtEl) mtEl.textContent=t;
-  });
-}
-
-function render(){
-  const desktop=document.getElementById("board-desktop");
-  const mobile=document.getElementById("board-mobile");
-  desktop.innerHTML="";mobile.innerHTML="";
-
-  countries.forEach(c=>{
-    const key=c.name;
-    ensureScore(key);
-    const s=scores[key];
-    const total=s.song+s.vocals+s.staging;
-
-    // --- DESKTOP ROW ---
-    const row=document.createElement("div");
-    row.className="row";
-    row.innerHTML=`
-      <div class="rank">
-        <div class="number">${c.number}</div>
-        <div class="flag">${c.flag}</div>
-      </div>
-      <div>
-        <div class="country-name">${c.name}</div>
-        <div class="song">${c.song}</div>
-      </div>
-      <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
-          onchange="updateScore('${key}','song',this.value)">
-      </div>
-      <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
-          onchange="updateScore('${key}','vocals',this.value)">
-      </div>
-      <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
-          onchange="updateScore('${key}','staging',this.value)">
-      </div>
-      <div class="score-box">
-        <div class="total" id="dt-total-${key}">${total}</div>
-      </div>
-      <div class="final-box">
-        <input type="checkbox" ${s.final?"checked":""}
-          onchange="toggleFinal('${key}',this.checked)">
-      </div>`;
-    desktop.appendChild(row);
-
-    // --- MOBILE CARD ---
-    const card=document.createElement("div");
-    card.className="m-card";
-    card.innerHTML=`
-      <div class="m-card-header">
-        <div class="m-flag">${c.flag}</div>
-        <div class="m-country">
-          <div class="m-country-name">${c.number}. ${c.name}</div>
-          <div class="m-song">${c.song}</div>
-        </div>
-      </div>
-      <div class="m-inputs">
-        <div class="m-field">
-          <label>Song</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
-            onchange="updateScore('${key}','song',this.value)">
-        </div>
-        <div class="m-field">
-          <label>Vocals</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
-            onchange="updateScore('${key}','vocals',this.value)">
-        </div>
-        <div class="m-field">
-          <label>Staging</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
-            onchange="updateScore('${key}','staging',this.value)">
-        </div>
-      </div>
-      <div class="m-footer">
-        <div class="m-total-wrap">
-          <div class="m-total-label">Gesamt</div>
-          <div class="m-total-val" id="mt-total-${key}">${total}</div>
-        </div>
-        <label class="m-finalist">
-          <span class="m-finalist-label">Ins Finale?</span>
-          <input type="checkbox" ${s.final?"checked":""}
-            onchange="toggleFinal('${key}',this.checked)">
-        </label>
-      </div>`;
-    mobile.appendChild(card);
-  });
-  save();
-}
-
-function getRanking(finalistsOnly){
-  return countries
-    .map(c=>{
-      const s=scores[c.name]||{song:0,vocals:0,staging:0,final:false};
-      return{flag:c.flag,name:c.name,total:s.song+s.vocals+s.staging,final:s.final};
-    })
-    .filter(c=>!finalistsOnly||c.final)
-    .sort((a,b)=>b.total-a.total);
-}
-
-function showOverlay(ranking,titleText,showPoints){
-  document.getElementById("overlay-title").textContent=titleText;
-  const top10=document.getElementById("top10");
-  top10.innerHTML="";
-  if(ranking.length===0){
-    top10.innerHTML=`<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px 0">
-      Noch keine Einträge – erst Länder auswählen!</p>`;
-  }else{
-    ranking.forEach((c,i)=>{
-      const card=document.createElement("div");
-      card.className="top-card";
-      card.innerHTML=`
-        <div class="top-country">
-          <div class="place">${i+1}</div>
-          <div>${c.flag} ${c.name}</div>
-        </div>
-        <div class="points">${showPoints?c.total+" Pkt":"FINALIST"}</div>`;
-      top10.appendChild(card);
-    });
-  }
-  document.getElementById("overlay").classList.add("show");
-  document.body.style.overflow="hidden";
-}
-
-function revealTop10(){
-  showOverlay(getRanking(false),"🏆 Meine Top 10 nach Punkten",true);
-}
-function revealFinalists(){
-  showOverlay(getRanking(true),"✨ Meine Finalisten",false);
-}
-function closeOverlay(){
-  document.getElementById("overlay").classList.remove("show");
-  document.body.style.overflow="";
-}
-
-document.getElementById("overlay").addEventListener("click",e=>{
-  if(e.target.id==="overlay") closeOverlay();
-});
-document.addEventListener("keydown",e=>{if(e.key==="Escape") closeOverlay();});
-
-render();
-</script>
 </body>
 </html>
