@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Eurovision 2026 Scoreboard</title>
+<title>Eurovision 2026 – Großes Finale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --bg:#060816;
+  --bg:#04060f;
+  --gold:#ffd700;
+  --gold2:#ffaa00;
   --pink:#ff2f86;
   --blue:#3ab8ff;
   --purple:#8a5cff;
-  --card:rgba(255,255,255,0.07);
+  --card:rgba(255,255,255,0.06);
   --border:rgba(255,255,255,0.09);
   --text:#ffffff;
-  --muted:rgba(255,255,255,0.72);
+  --muted:rgba(255,255,255,0.70);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
@@ -24,248 +26,331 @@ body{
   font-family:"Montserrat",system-ui,sans-serif;
   color:var(--text);
   background:
-    radial-gradient(circle at top left,#ff008833,transparent 25%),
-    radial-gradient(circle at top right,#00aaff22,transparent 25%),
-    linear-gradient(180deg,#080b1d 0%,#050816 35%,#050611 100%);
+    radial-gradient(ellipse 80% 40% at 50% -10%,rgba(255,215,0,0.12),transparent),
+    radial-gradient(circle at 10% 30%,rgba(255,47,134,0.10),transparent 40%),
+    radial-gradient(circle at 90% 60%,rgba(58,184,255,0.08),transparent 40%),
+    linear-gradient(180deg,#080a1a 0%,#04060f 40%,#030510 100%);
   min-height:100vh;
-  overflow-x:hidden;
 }
 body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,0.16) 1px,transparent 1px);
-  background-size:4px 4px;
-  opacity:0.04;
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.9) 1px,transparent 1px),
+    radial-gradient(rgba(255,255,255,0.5) 1px,transparent 1px);
+  background-size:120px 120px,60px 60px;
+  background-position:0 0,30px 30px;
+  opacity:0.035;
 }
+body::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,215,0,0.025) 50%,transparent 60%);
+  background-size:200% 200%;
+  animation:shimmer 8s linear infinite;
+}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
 /* HERO */
 .hero{
-  position:relative;
-  overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 40px) 20px 32px;
+  position:relative;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 44px) 20px 36px;
   text-align:center;
 }
 .hero::before{
-  content:"";position:absolute;width:520px;height:520px;left:-180px;top:-120px;
-  background:radial-gradient(circle,#ff2f8644,transparent 70%);filter:blur(40px);
-}
-.hero::after{
-  content:"";position:absolute;width:520px;height:520px;right:-180px;top:-120px;
-  background:radial-gradient(circle,#00aaff33,transparent 70%);filter:blur(40px);
+  content:"";position:absolute;width:700px;height:700px;
+  left:50%;top:-280px;transform:translateX(-50%);
+  background:radial-gradient(circle,rgba(255,215,0,0.18),rgba(255,47,134,0.08) 40%,transparent 70%);
+  filter:blur(30px);pointer-events:none;
 }
 .hero-content{position:relative;z-index:2;}
 .logo{
-  display:inline-flex;align-items:center;gap:12px;
-  margin-bottom:16px;padding:8px 16px;border-radius:999px;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);font-size:0.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:18px;padding:8px 18px;border-radius:999px;
+  background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);
+  backdrop-filter:blur(12px);font-size:0.75rem;font-weight:800;
+  letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);
 }
 .logo-dot{
   width:9px;height:9px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pink),var(--blue));
-  box-shadow:0 0 20px var(--pink);
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  box-shadow:0 0 14px var(--gold);
 }
 .esc{
-  font-size:clamp(2.8rem,10vw,6rem);font-weight:800;line-height:0.92;letter-spacing:-4px;
-  text-shadow:0 0 30px rgba(255,0,150,0.3);
+  font-size:clamp(3rem,11vw,6.5rem);font-weight:800;line-height:0.9;letter-spacing:-4px;
+  background:linear-gradient(160deg,#fff 10%,var(--gold) 45%,#fff 80%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 40px rgba(255,215,0,0.25));
 }
-.songcontest{margin-top:10px;font-size:clamp(0.85rem,3vw,1.4rem);font-weight:700;letter-spacing:6px;opacity:0.92;}
+.songcontest{
+  margin-top:10px;font-size:clamp(0.85rem,3vw,1.35rem);font-weight:700;
+  letter-spacing:7px;opacity:0.9;
+}
 .vienna{
   margin-top:18px;display:inline-flex;align-items:center;gap:10px;
-  padding:10px 18px;border-radius:999px;
-  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.14));
-  border:1px solid rgba(255,255,255,0.08);
-  font-size:0.85rem;font-weight:700;letter-spacing:4px;color:#ffd4e8;
+  padding:10px 22px;border-radius:999px;
+  background:linear-gradient(135deg,rgba(255,215,0,0.14),rgba(255,47,134,0.10));
+  border:1px solid rgba(255,215,0,0.22);
+  font-size:0.82rem;font-weight:800;letter-spacing:4px;color:#ffe8a0;
+}
+.finale-badge{
+  margin-top:14px;display:inline-flex;align-items:center;gap:8px;
+  padding:7px 18px;border-radius:999px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  font-size:0.82rem;font-weight:800;letter-spacing:3px;color:#1a0e00;
+  box-shadow:0 4px 28px rgba(255,215,0,0.30);
 }
 
-/* CONTAINER & GLASS */
-.container{width:min(1400px,100%);margin:0 auto;padding:0 14px 40px;}
+/* CONTAINER */
+.container{width:min(1440px,100%);margin:0 auto;padding:0 14px 60px;}
 .glass{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(18px);border-radius:24px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,215,0,0.10);
+  backdrop-filter:blur(20px);border-radius:28px;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.04) inset;
 }
-.section{padding:18px;}
+.section{padding:20px;}
 .section-row{
   display:flex;justify-content:space-between;align-items:center;gap:14px;
-  margin-bottom:16px;flex-wrap:wrap;
+  margin-bottom:18px;flex-wrap:wrap;
 }
-.section-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;letter-spacing:-1px;}
+.section-title{
+  font-size:clamp(1.3rem,5vw,2rem);font-weight:800;letter-spacing:-1px;
+  background:linear-gradient(120deg,#fff,var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
 .storage{
   padding:10px 14px;border-radius:16px;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  font-size:0.8rem;color:var(--muted);
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,0,0.12);
+  font-size:0.78rem;color:var(--muted);
 }
 
-/* ── DESKTOP TABLE ── */
+/* LEGEND */
+.legend{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  padding:12px 16px;border-radius:16px;margin-bottom:16px;
+  background:rgba(255,215,0,0.05);border:1px solid rgba(255,215,0,0.10);
+  font-size:0.78rem;color:var(--muted);font-weight:600;gap:14px;
+}
+.legend-item{display:flex;align-items:center;gap:8px;}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+
+/* DESKTOP TABLE */
 .board-wrap{
   overflow:auto;-webkit-overflow-scrolling:touch;
-  border-radius:20px;border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;border:1px solid rgba(255,215,0,0.10);
 }
-.board{min-width:860px;}
+.board{min-width:920px;}
 .header-row,.row{
   display:grid;
-  grid-template-columns:76px minmax(200px,1.8fr) 100px 100px 100px 100px 84px;
+  grid-template-columns:76px minmax(200px,1.8fr) 100px 100px 100px 100px 110px;
   align-items:center;
 }
 .header-row{
   position:sticky;top:0;z-index:5;padding:14px 16px;
-  background:linear-gradient(180deg,rgba(18,22,46,0.98),rgba(11,14,29,0.98));
-  backdrop-filter:blur(12px);
-  font-size:0.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  color:rgba(255,255,255,0.72);border-bottom:1px solid rgba(255,255,255,0.08);
+  background:linear-gradient(180deg,rgba(10,12,28,0.99),rgba(6,8,20,0.99));
+  backdrop-filter:blur(14px);
+  font-size:0.7rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,215,0,0.7);border-bottom:1px solid rgba(255,215,0,0.10);
 }
 .row{
-  padding:12px 16px;transition:0.18s ease;
-  border-bottom:1px solid rgba(255,255,255,0.05);
+  padding:11px 16px;transition:0.18s ease;
+  border-bottom:1px solid rgba(255,255,255,0.04);
 }
-.row:hover{background:rgba(255,255,255,0.03);}
+.row:hover{background:rgba(255,215,0,0.03);}
+.row.has-score{border-left:3px solid rgba(255,215,0,0.30);}
+
 .rank{display:flex;align-items:center;gap:10px;}
 .number{
   width:40px;height:40px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,var(--pink),var(--purple));
-  font-weight:800;font-size:0.85rem;
-  box-shadow:0 0 20px rgba(255,47,134,0.28);
-  flex-shrink:0;
+  background:linear-gradient(135deg,rgba(255,215,0,0.14),rgba(255,170,0,0.08));
+  border:1px solid rgba(255,215,0,0.20);
+  font-weight:800;font-size:0.82rem;color:var(--gold);flex-shrink:0;
 }
 .flag{font-size:1.7rem;margin-right:8px;}
 .country-name{font-size:1rem;font-weight:700;}
-.song{margin-top:3px;font-size:0.8rem;line-height:1.3;color:rgba(255,255,255,0.65);}
-.score-box,.final-box{display:flex;justify-content:center;}
+.song{margin-top:3px;font-size:0.78rem;color:rgba(255,255,255,0.55);}
+.placeholder-text{font-style:italic;font-size:0.82rem;font-weight:500;color:rgba(255,215,0,0.40);}
+
+.score-box,.pred-box{display:flex;justify-content:center;}
 input[type="number"]{
-  width:70px;height:46px;border:none;outline:none;border-radius:14px;
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);
+  width:72px;height:46px;border:none;outline:none;border-radius:14px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
   color:white;text-align:center;font-size:1rem;font-weight:700;
   font-family:"Montserrat",sans-serif;transition:0.18s;
+  -moz-appearance:textfield;appearance:textfield;
 }
-input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,47,134,0.15);}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;}
+input[type="number"]:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(255,215,0,0.10);}
+.pred-input{
+  width:90px;height:46px;border:none;outline:none;border-radius:14px;
+  background:rgba(255,215,0,0.07);border:1px solid rgba(255,215,0,0.20);
+  color:var(--gold);text-align:center;font-size:1rem;font-weight:800;
+  font-family:"Montserrat",sans-serif;transition:0.18s;
+  -moz-appearance:textfield;appearance:textfield;
+}
+.pred-input::-webkit-inner-spin-button,
+.pred-input::-webkit-outer-spin-button{-webkit-appearance:none;}
+.pred-input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(255,215,0,0.14);}
 .total{
-  width:70px;height:46px;border-radius:14px;
+  width:72px;height:46px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;font-weight:800;
-  background:linear-gradient(135deg,rgba(255,47,134,0.16),rgba(58,184,255,0.12));
+  background:linear-gradient(135deg,rgba(255,215,0,0.12),rgba(255,47,134,0.08));
+  border:1px solid rgba(255,215,0,0.14);color:var(--gold);
 }
-input[type="checkbox"]{width:24px;height:24px;accent-color:var(--pink);}
 
-/* ── MOBILE CARDS ── */
+/* MOBILE CARDS */
 .mobile-cards{display:none;}
 .m-card{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);
-  border-radius:20px;padding:16px;margin-bottom:12px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,215,0,0.10);
+  border-radius:22px;padding:16px;margin-bottom:12px;transition:border-color 0.18s;
 }
+.m-card.has-score{border-color:rgba(255,215,0,0.28);}
 .m-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .m-flag{font-size:2rem;}
 .m-country{flex:1;}
 .m-country-name{font-size:1.05rem;font-weight:800;}
-.m-song{font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:2px;line-height:1.35;}
+.m-song{font-size:0.76rem;color:rgba(255,255,255,0.55);margin-top:2px;line-height:1.35;}
+.m-placeholder{color:rgba(255,215,0,0.40);font-style:italic;}
 .m-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
-.m-field label{display:block;font-size:0.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;text-align:center;}
+.m-field label{
+  display:block;font-size:0.66rem;font-weight:800;letter-spacing:1px;
+  text-transform:uppercase;color:rgba(255,255,255,0.42);margin-bottom:6px;text-align:center;
+}
 .m-field input[type="number"]{
   width:100%;height:52px;border:none;outline:none;border-radius:14px;
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);
   color:white;text-align:center;font-size:1.1rem;font-weight:800;
   font-family:"Montserrat",sans-serif;transition:0.18s;
+  -moz-appearance:textfield;appearance:textfield;
 }
-.m-field input[type="number"]:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,47,134,0.18);}
+.m-field input[type="number"]::-webkit-inner-spin-button,
+.m-field input[type="number"]::-webkit-outer-spin-button{-webkit-appearance:none;}
+.m-field input[type="number"]:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,0.12);}
 .m-footer{
   display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;
+  border-top:1px solid rgba(255,255,255,0.07);padding-top:12px;gap:10px;flex-wrap:wrap;
 }
 .m-total-wrap{display:flex;align-items:center;gap:10px;}
-.m-total-label{font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.m-total-label{font-size:0.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.42);}
 .m-total-val{
-  min-width:54px;height:44px;border-radius:12px;
+  min-width:52px;height:44px;border-radius:12px;
   display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;
-  background:linear-gradient(135deg,rgba(255,47,134,0.18),rgba(58,184,255,0.14));
+  background:linear-gradient(135deg,rgba(255,215,0,0.14),rgba(255,47,134,0.08));
+  color:var(--gold);border:1px solid rgba(255,215,0,0.14);
 }
-.m-finalist{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.m-finalist-label{font-size:0.8rem;font-weight:700;color:var(--muted);}
-.m-finalist input[type="checkbox"]{
-  width:26px;height:26px;accent-color:var(--pink);cursor:pointer;
-  flex-shrink:0;
+.m-pred-wrap{display:flex;align-items:center;gap:8px;}
+.m-pred-label{font-size:0.72rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,215,0,0.55);}
+.m-pred-input{
+  width:62px;height:44px;border:none;outline:none;border-radius:12px;
+  background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.22);
+  color:var(--gold);text-align:center;font-size:1.05rem;font-weight:800;
+  font-family:"Montserrat",sans-serif;transition:0.18s;
+  -moz-appearance:textfield;appearance:textfield;
 }
+.m-pred-input::-webkit-inner-spin-button,
+.m-pred-input::-webkit-outer-spin-button{-webkit-appearance:none;}
+.m-pred-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,215,0,0.14);}
 
 /* ACTIONS */
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
-button{border:none;outline:none;cursor:pointer;transition:0.2s ease;}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+button{border:none;outline:none;cursor:pointer;transition:0.2s ease;font-family:"Montserrat",sans-serif;}
 .reveal-btn{
-  height:60px;border-radius:18px;color:white;font-size:0.95rem;font-weight:800;
-  font-family:"Montserrat",sans-serif;
+  height:62px;border-radius:18px;color:white;font-size:0.9rem;font-weight:800;
   background:linear-gradient(135deg,var(--pink),var(--purple));
-  box-shadow:0 8px 28px rgba(255,47,134,0.22);
+  box-shadow:0 8px 28px rgba(255,47,134,0.20);
 }
-.secondary{background:linear-gradient(135deg,#0077ff,#00c6ff);}
+.gold-btn{
+  background:linear-gradient(135deg,#ffd700,#ff9900);
+  color:#1a0800;
+  box-shadow:0 8px 28px rgba(255,215,0,0.22);
+}
 .reveal-btn:hover{transform:translateY(-2px);}
 .reveal-btn:active{transform:scale(0.97);}
-.limit{margin-top:12px;text-align:center;color:rgba(255,255,255,0.72);font-size:0.88rem;}
-.limit span{color:#ffd2e8;font-weight:700;}
 
 /* OVERLAY */
 .overlay{
   position:fixed;inset:0;z-index:999;
   padding:24px;display:none;flex-direction:column;
   align-items:center;justify-content:center;
-  background:rgba(0,0,0,0.88);
-  overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
+  background:rgba(2,3,12,0.92);
+  overflow-y:auto;-webkit-overflow-scrolling:touch;
 }
 .overlay.show{display:flex;}
-.overlay-inner{width:min(920px,100%);}
-.overlay-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
-.overlay-title{font-size:clamp(1.3rem,5vw,2rem);font-weight:800;}
+.overlay-inner{width:min(960px,100%);}
+.overlay-header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;
+}
+.overlay-title{
+  font-size:clamp(1.3rem,5vw,2rem);font-weight:800;
+  background:linear-gradient(120deg,#fff,var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
 .close-btn{
   width:48px;height:48px;border-radius:50%;
-  background:rgba(255,255,255,0.1);color:white;font-size:1.2rem;
-  font-family:"Montserrat",sans-serif;flex-shrink:0;
+  background:rgba(255,255,255,0.08);color:white;font-size:1.2rem;flex-shrink:0;
 }
-.top10{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.top-card{
-  padding:16px;border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.04));
-  border:1px solid rgba(255,255,255,0.09);
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.result-card{
+  padding:16px 18px;border-radius:20px;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
 }
-.top-country{display:flex;align-items:center;gap:12px;font-weight:700;}
-.place{width:40px;font-size:1.6rem;font-weight:800;color:#ffd1e6;flex-shrink:0;}
-.points{font-weight:700;color:rgba(255,255,255,0.7);white-space:nowrap;}
+.result-card.gold-1{
+  background:linear-gradient(135deg,rgba(255,215,0,0.16),rgba(255,170,0,0.08));
+  border-color:rgba(255,215,0,0.32);
+}
+.result-card.gold-2{
+  background:linear-gradient(135deg,rgba(220,220,220,0.10),rgba(180,180,180,0.05));
+  border-color:rgba(200,200,200,0.22);
+}
+.result-card.gold-3{
+  background:linear-gradient(135deg,rgba(205,127,50,0.12),rgba(180,100,20,0.06));
+  border-color:rgba(205,127,50,0.22);
+}
+.result-left{display:flex;align-items:center;gap:14px;}
+.place{font-size:1.6rem;font-weight:800;min-width:44px;flex-shrink:0;color:rgba(255,255,255,0.55);}
+.place.p1{color:var(--gold);text-shadow:0 0 20px rgba(255,215,0,0.5);}
+.place.p2{color:#d0d0d0;}
+.place.p3{color:#cd7f32;}
+.result-name{font-weight:700;font-size:0.95rem;}
+.result-flag{font-size:1.4rem;}
+.result-pts{font-weight:700;color:rgba(255,255,255,0.60);white-space:nowrap;font-size:0.9rem;}
+.result-pts.gold{color:var(--gold);}
 
 /* FOOTER */
 .footer{
   padding:28px 20px calc(env(safe-area-inset-bottom) + 32px);
-  text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem;
+  text-align:center;color:rgba(255,255,255,0.32);font-size:0.82rem;
 }
 
 ::-webkit-scrollbar{height:8px;width:8px;}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.16);border-radius:999px;}
+::-webkit-scrollbar-thumb{background:rgba(255,215,0,0.15);border-radius:999px;}
 
-/* ── RESPONSIVE ── */
 @media(max-width:700px){
   .board-wrap{display:none;}
   .mobile-cards{display:block;}
   .section{padding:14px;}
   .section-row{flex-direction:column;align-items:stretch;}
-  .storage{text-align:center;font-size:0.78rem;}
+  .storage{text-align:center;font-size:0.76rem;}
+  .legend{font-size:0.74rem;}
   .actions{grid-template-columns:1fr;}
   .reveal-btn{height:56px;}
-  .top10{grid-template-columns:1fr;}
+  .results-grid{grid-template-columns:1fr;}
   .overlay{padding:14px;}
-  .overlay-title{font-size:1.3rem;}
-}
-@media(max-width:380px){
-  .m-inputs{grid-template-columns:1fr 1fr 1fr;}
-  .m-field input[type="number"]{height:48px;font-size:1rem;}
+  .overlay-title{font-size:1.2rem;}
 }
 </style>
 </head>
 <body>
-
+<div style="overflow-x:hidden;width:100%;min-height:100vh;">
 <div class="hero">
   <div class="hero-content">
     <div class="logo"><div class="logo-dot"></div>ESC WATCH PARTY</div>
     <div class="esc">Eurovision</div>
     <div class="songcontest">SONG CONTEST</div>
     <div class="vienna">✨ VIENNA 2026 ✨</div>
+    <div class="finale-badge">★ GROSSES FINALE ★</div>
   </div>
 </div>
 
@@ -273,11 +358,22 @@ button{border:none;outline:none;cursor:pointer;transition:0.2s ease;}
   <div class="glass section">
 
     <div class="section-row">
-      <div class="section-title">Erstes Halbfinale</div>
-      <div class="storage">🔒 Scores nur auf deinem Gerät gespeichert</div>
+      <div class="section-title">Großes Finale</div>
+      <div class="storage">🔒 Nur auf deinem Gerät gespeichert</div>
     </div>
 
-    <!-- DESKTOP TABLE -->
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:rgba(255,255,255,0.5)"></div>
+        <span>Song / Vocals / Staging: 0–12 Punkte</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:var(--gold)"></div>
+        <span>Platz-Tipp (goldenes Feld): wo landet das Land wirklich?</span>
+      </div>
+    </div>
+
+    <!-- DESKTOP -->
     <div class="board-wrap">
       <div class="board">
         <div class="header-row">
@@ -287,106 +383,137 @@ button{border:none;outline:none;cursor:pointer;transition:0.2s ease;}
           <div style="text-align:center">Vocals</div>
           <div style="text-align:center">Staging</div>
           <div style="text-align:center">Gesamt</div>
-          <div style="text-align:center">Finale</div>
+          <div style="text-align:center">Platz-Tipp</div>
         </div>
         <div id="board-desktop"></div>
       </div>
     </div>
 
-    <!-- MOBILE CARDS -->
+    <!-- MOBILE -->
     <div class="mobile-cards" id="board-mobile"></div>
 
     <div class="actions">
-      <button class="reveal-btn" onclick="revealTop10()">🏆 Meine Top 10</button>
-      <button class="reveal-btn secondary" onclick="revealFinalists()">✨ Finalisten</button>
+      <button class="reveal-btn gold-btn" onclick="showOverlay('scores')">🏆 Meine Punktewertung</button>
+      <button class="reveal-btn" onclick="showOverlay('predictions')">🎯 Meine Platzierungstipps</button>
     </div>
 
-    <div class="limit">Max. <span>10 Länder</span> fürs Finale wählen</div>
   </div>
 </div>
 
+<!-- OVERLAY -->
 <div class="overlay" id="overlay">
   <div class="overlay-inner">
     <div class="overlay-header">
-      <div class="overlay-title" id="overlay-title">✨ Meine ESC Top 10 ✨</div>
+      <div class="overlay-title" id="overlay-title"></div>
       <button class="close-btn" onclick="closeOverlay()">✕</button>
     </div>
-    <div class="top10" id="top10"></div>
+    <div class="results-grid" id="results-grid"></div>
   </div>
 </div>
 
-<div class="footer">♡ United by Music · ESC 2026 Watch Party</div>
+<div class="footer">♡ United by Music &nbsp;·&nbsp; ESC 2026 Grand Final Watch Party</div>
 
 <script>
-const countries=[
-  {flag:"🇲🇩",number:"01",name:"Moldau",song:"Satoshi – Viva Moldova"},
-  {flag:"🇸🇪",number:"02",name:"Schweden",song:"Felicia – My System"},
-  {flag:"🇭🇷",number:"03",name:"Kroatien",song:"Lelek – Andromeda"},
-  {flag:"🇬🇷",number:"04",name:"Griechenland",song:"Akylao – Ferto"},
-  {flag:"🇵🇹",number:"05",name:"Portugal",song:"Bandido do Cante – Rosa"},
-  {flag:"🇬🇪",number:"06",name:"Georgien",song:"Bzikebi – On Replay"},
-  {flag:"🇫🇮",number:"07",name:"Finnland",song:"Linda Lampenius – Liekinheitin"},
-  {flag:"🇲🇪",number:"08",name:"Montenegro",song:"Tamara Živković – Nova zora"},
-  {flag:"🇪🇪",number:"09",name:"Estland",song:"Vanilla Ninja – Too Epic To Be True"},
-  {flag:"🇮🇱",number:"10",name:"Israel",song:"Noam Cohen – Michelle"},
-  {flag:"🇧🇪",number:"11",name:"Belgien",song:"Essyla – Dancing on the Ice"},
-  {flag:"🇱🇹",number:"12",name:"Litauen",song:"Lion Cecchah – Sólo quiero más"},
-  {flag:"🇸🇲",number:"13",name:"San Marino",song:"Senhit feat. Boy George – Superstar"},
-  {flag:"🇵🇱",number:"14",name:"Polen",song:"Aicja – Pray"},
-  {flag:"🇷🇸",number:"15",name:"Serbien",song:"Lavina – Kraj mene"}
+const countries = [
+  {flag:"🇩🇰",number:"01",name:"Denmark",song:"Søren Torpegaard Lund - Før Vi Går Hjem",placeholder:false},
+  {flag:"🇩🇪",number:"02",name:"Germany",song:"Sarah Engels - Fire",placeholder:false},
+  {flag:"🇮🇱",number:"03",name:"Israel",song:"Noam Bettan - Michelle",placeholder:false},
+  {flag:"🇧🇪",number:"04",name:"Belgium",song:"ESSYLA - Dancing on the Ice",placeholder:false},
+  {flag:"🇦🇱",number:"05",name:"Albania",song:"Alis - Nân",placeholder:false},
+  {flag:"🇬🇷",number:"06",name:"Greece",song:"Akylas - Ferto",placeholder:false},
+  {flag:"🇺🇦",number:"07",name:"Ukraine",song:"LELÉKA - Ridnym",placeholder:false},
+  {flag:"🇦🇺",number:"08",name:"Australia",song:"Delta Goodrem - Eclipse",placeholder:false},
+  {flag:"🇷🇸",number:"09",name:"Serbia",song:"LAVINA - Kraj Mene",placeholder:false},
+  {flag:"🇲🇹",number:"10",name:"Malta",song:"AIDAN - Bella",placeholder:false},
+  {flag:"🇨🇿",number:"11",name:"Czechia",song:"Daniel Zizka - CROSSROADS",placeholder:false},
+  {flag:"🇧🇬",number:"12",name:"Bulgaria",song:"DARA - Bangaranga",placeholder:false},
+  {flag:"🇭🇷",number:"13",name:"Croatia",song:"LELEK - Andromeda",placeholder:false},
+  {flag:"🇬🇧",number:"14",name:"United Kingdom",song:"LOOK MUM NO COMPUTER - Eins, Zwei, Drei",placeholder:false},
+  {flag:"🇫🇷",number:"15",name:"France",song:"Monroe - Regarde !",placeholder:false},
+  {flag:"🇲🇩",number:"16",name:"Moldova",song:"Satoshi - Viva, Moldova!",placeholder:false},
+  {flag:"🇫🇮",number:"17",name:"Finland",song:"Linda Lampenius x Pete Parkkonen - Liekinheitin",placeholder:false},
+  {flag:"🇵🇱",number:"18",name:"Poland",song:"ALICJA - Pray",placeholder:false},
+  {flag:"🇱🇹",number:"19",name:"Lithuania",song:"Lion Ceccah - Sólo Quiero Más",placeholder:false},
+  {flag:"🇸🇪",number:"20",name:"Sweden",song:"FELICIA - My System",placeholder:false},
+  {flag:"🇨🇾",number:"21",name:"Cyprus",song:"Antigoni - JALLA",placeholder:false},
+  {flag:"🇮🇹",number:"22",name:"Italy",song:"Sal Da Vinci - Per Sempre Sì",placeholder:false},
+  {flag:"🇳🇴",number:"23",name:"Norway",song:"JONAS LOVV - YA YA YA",placeholder:false},
+  {flag:"🇷🇴",number:"24",name:"Romania",song:"Alexandra Căpitănescu - Choke Me",placeholder:false},
+  {flag:"🇦🇹",number:"25",name:"Austria",song:"COSMÓ - Tanzschein",placeholder:false},
 ];
 
-let scores=JSON.parse(localStorage.getItem("esc2026-semi1"))||{};
+let scores=JSON.parse(localStorage.getItem("esc2026-finale"))||{};
 
-function save(){localStorage.setItem("esc2026-semi1",JSON.stringify(scores));}
+function save(){localStorage.setItem("esc2026-finale",JSON.stringify(scores));}
 
 function ensureScore(key){
-  if(!scores[key]) scores[key]={song:0,vocals:0,staging:0,final:false};
+  if(!scores[key]) scores[key]={song:0,vocals:0,staging:0,pred:""};
+}
+
+function clamp(v,min,max){
+  const n=Number(v);
+  if(isNaN(n)) return min;
+  return Math.min(max,Math.max(min,n));
 }
 
 function updateScore(country,cat,val){
-  let v=Number(val);if(v<0)v=0;if(v>12)v=12;
+  const v=val===""?0:clamp(val,0,12);
   scores[country][cat]=v;
   save();renderTotals();
 }
 
-function toggleFinal(country,checked){
-  const count=Object.values(scores).filter(s=>s.final).length;
-  if(checked&&count>=10){
-    alert("Du kannst maximal 10 Länder auswählen.");
-    render();return;
-  }
-  scores[country].final=checked;
-  save();renderTotals();
+function updatePred(country,val){
+  scores[country].pred=val===""?"":clamp(val,1,25);
+  save();
+}
+
+function hasAnyScore(key){
+  const s=scores[key];
+  return s&&(s.song||s.vocals||s.staging);
 }
 
 function renderTotals(){
   countries.forEach(c=>{
     const key=c.name;
-    const t=(scores[key].song||0)+(scores[key].vocals||0)+(scores[key].staging||0);
-    // update desktop total
+    const s=scores[key]||{song:0,vocals:0,staging:0};
+    const t=(s.song||0)+(s.vocals||0)+(s.staging||0);
     const dtEl=document.getElementById("dt-total-"+key);
     if(dtEl) dtEl.textContent=t;
-    // update mobile total
     const mtEl=document.getElementById("mt-total-"+key);
     if(mtEl) mtEl.textContent=t;
+    const row=document.getElementById("row-"+key);
+    if(row) row.classList.toggle("has-score",!!hasAnyScore(key));
+    const card=document.getElementById("card-"+key);
+    if(card) card.classList.toggle("has-score",!!hasAnyScore(key));
   });
+}
+
+function songLine(c){
+  if(c.placeholder) return '<div class="placeholder-text">Wird noch bekannt gegeben…</div>';
+  return '<div class="song">'+c.song+'</div>';
+}
+function songLineMobile(c){
+  if(c.placeholder) return '<div class="m-song m-placeholder">Wird noch bekannt gegeben…</div>';
+  return '<div class="m-song">'+c.song+'</div>';
 }
 
 function render(){
   const desktop=document.getElementById("board-desktop");
   const mobile=document.getElementById("board-mobile");
-  desktop.innerHTML="";mobile.innerHTML="";
+  desktop.innerHTML="";
+  mobile.innerHTML="";
 
   countries.forEach(c=>{
     const key=c.name;
     ensureScore(key);
     const s=scores[key];
-    const total=s.song+s.vocals+s.staging;
+    const total=(s.song||0)+(s.vocals||0)+(s.staging||0);
+    const scored=hasAnyScore(key);
 
-    // --- DESKTOP ROW ---
+    // DESKTOP
     const row=document.createElement("div");
-    row.className="row";
+    row.className="row"+(scored?" has-score":"");
+    row.id="row-"+key;
     row.innerHTML=`
       <div class="rank">
         <div class="number">${c.number}</div>
@@ -394,54 +521,56 @@ function render(){
       </div>
       <div>
         <div class="country-name">${c.name}</div>
-        <div class="song">${c.song}</div>
+        ${songLine(c)}
       </div>
       <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.song||""}" placeholder="0"
           onchange="updateScore('${key}','song',this.value)">
       </div>
       <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals||""}" placeholder="0"
           onchange="updateScore('${key}','vocals',this.value)">
       </div>
       <div class="score-box">
-        <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
+        <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging||""}" placeholder="0"
           onchange="updateScore('${key}','staging',this.value)">
       </div>
       <div class="score-box">
         <div class="total" id="dt-total-${key}">${total}</div>
       </div>
-      <div class="final-box">
-        <input type="checkbox" ${s.final?"checked":""}
-          onchange="toggleFinal('${key}',this.checked)">
+      <div class="pred-box">
+        <input class="pred-input" type="number" inputmode="numeric" min="1" max="25"
+          value="${s.pred||""}" placeholder="1–25"
+          onchange="updatePred('${key}',this.value)">
       </div>`;
     desktop.appendChild(row);
 
-    // --- MOBILE CARD ---
+    // MOBILE
     const card=document.createElement("div");
-    card.className="m-card";
+    card.className="m-card"+(scored?" has-score":"");
+    card.id="card-"+key;
     card.innerHTML=`
       <div class="m-card-header">
         <div class="m-flag">${c.flag}</div>
         <div class="m-country">
           <div class="m-country-name">${c.number}. ${c.name}</div>
-          <div class="m-song">${c.song}</div>
+          ${songLineMobile(c)}
         </div>
       </div>
       <div class="m-inputs">
         <div class="m-field">
           <label>Song</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.song}"
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.song||""}" placeholder="0"
             onchange="updateScore('${key}','song',this.value)">
         </div>
         <div class="m-field">
           <label>Vocals</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals}"
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.vocals||""}" placeholder="0"
             onchange="updateScore('${key}','vocals',this.value)">
         </div>
         <div class="m-field">
           <label>Staging</label>
-          <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging}"
+          <input type="number" inputmode="numeric" min="0" max="12" value="${s.staging||""}" placeholder="0"
             onchange="updateScore('${key}','staging',this.value)">
         </div>
       </div>
@@ -450,57 +579,94 @@ function render(){
           <div class="m-total-label">Gesamt</div>
           <div class="m-total-val" id="mt-total-${key}">${total}</div>
         </div>
-        <label class="m-finalist">
-          <span class="m-finalist-label">Ins Finale?</span>
-          <input type="checkbox" ${s.final?"checked":""}
-            onchange="toggleFinal('${key}',this.checked)">
-        </label>
+        <div class="m-pred-wrap">
+          <div class="m-pred-label">Platz-Tipp</div>
+          <input class="m-pred-input" type="number" inputmode="numeric" min="1" max="25"
+            value="${s.pred||""}" placeholder="?"
+            onchange="updatePred('${key}',this.value)">
+        </div>
       </div>`;
     mobile.appendChild(card);
   });
   save();
 }
 
-function getRanking(finalistsOnly){
-  return countries
-    .map(c=>{
-      const s=scores[c.name]||{song:0,vocals:0,staging:0,final:false};
-      return{flag:c.flag,name:c.name,total:s.song+s.vocals+s.staging,final:s.final};
-    })
-    .filter(c=>!finalistsOnly||c.final)
-    .sort((a,b)=>b.total-a.total);
+function cardClass(rank){
+  if(rank===1) return "result-card gold-1";
+  if(rank===2) return "result-card gold-2";
+  if(rank===3) return "result-card gold-3";
+  return "result-card";
+}
+function placeEl(rank){
+  if(rank===1) return '<div class="place p1">🥇</div>';
+  if(rank===2) return '<div class="place p2">🥈</div>';
+  if(rank===3) return '<div class="place p3">🥉</div>';
+  return '<div class="place">'+rank+'</div>';
 }
 
-function showOverlay(ranking,titleText,showPoints){
-  document.getElementById("overlay-title").textContent=titleText;
-  const top10=document.getElementById("top10");
-  top10.innerHTML="";
-  if(ranking.length===0){
-    top10.innerHTML=`<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:20px 0">
-      Noch keine Einträge – erst Länder auswählen!</p>`;
-  }else{
-    ranking.forEach((c,i)=>{
-      const card=document.createElement("div");
-      card.className="top-card";
-      card.innerHTML=`
-        <div class="top-country">
-          <div class="place">${i+1}</div>
-          <div>${c.flag} ${c.name}</div>
-        </div>
-        <div class="points">${showPoints?c.total+" Pkt":"FINALIST"}</div>`;
-      top10.appendChild(card);
-    });
+function showOverlay(mode){
+  const grid=document.getElementById("results-grid");
+  grid.innerHTML="";
+
+  if(mode==="scores"){
+    document.getElementById("overlay-title").textContent="🏆 Meine Punktewertung";
+    const ranked=countries
+      .map(c=>{
+        const s=scores[c.name]||{};
+        return{flag:c.flag,name:c.name,total:(s.song||0)+(s.vocals||0)+(s.staging||0)};
+      })
+      .sort((a,b)=>b.total-a.total);
+
+    if(ranked.every(r=>r.total===0)){
+      grid.innerHTML=`<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:24px 0">Noch keine Punkte vergeben – erst bewerten!</p>`;
+    } else {
+      ranked.forEach((c,i)=>{
+        const card=document.createElement("div");
+        card.className=cardClass(i+1);
+        card.innerHTML=`
+          <div class="result-left">
+            ${placeEl(i+1)}
+            <span class="result-flag">${c.flag}</span>
+            <span class="result-name">${c.name}</span>
+          </div>
+          <div class="result-pts ${i===0?"gold":""}">${c.total} Pkt</div>`;
+        grid.appendChild(card);
+      });
+    }
+
+  } else {
+    document.getElementById("overlay-title").textContent="🎯 Meine Platzierungstipps";
+    const predicted=countries
+      .map(c=>{
+        const s=scores[c.name]||{};
+        return{flag:c.flag,name:c.name,pred:s.pred};
+      })
+      .filter(c=>c.pred!==""&&c.pred!==undefined&&c.pred!==null)
+      .sort((a,b)=>Number(a.pred)-Number(b.pred));
+
+    if(predicted.length===0){
+      grid.innerHTML=`<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:24px 0">Noch keine Tipps – goldene Felder ausfüllen!</p>`;
+    } else {
+      predicted.forEach(c=>{
+        const rank=Number(c.pred);
+        const card=document.createElement("div");
+        card.className=cardClass(rank);
+        card.innerHTML=`
+          <div class="result-left">
+            ${placeEl(rank)}
+            <span class="result-flag">${c.flag}</span>
+            <span class="result-name">${c.name}</span>
+          </div>
+          <div class="result-pts ${rank<=3?"gold":""}">Platz ${rank}</div>`;
+        grid.appendChild(card);
+      });
+    }
   }
+
   document.getElementById("overlay").classList.add("show");
   document.body.style.overflow="hidden";
 }
 
-function revealTop10(){
-  showOverlay(getRanking(false),"🏆 Meine Top 10 nach Punkten",true);
-}
-function revealFinalists(){
-  showOverlay(getRanking(true),"✨ Meine Finalisten",false);
-}
 function closeOverlay(){
   document.getElementById("overlay").classList.remove("show");
   document.body.style.overflow="";
@@ -513,5 +679,6 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape") closeOverlay();});
 
 render();
 </script>
+</div>
 </body>
 </html>
